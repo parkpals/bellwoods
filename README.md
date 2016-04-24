@@ -1,2 +1,2 @@
 # bellwoods
-A finder app for Trinity Bellwods Park
+A finder app for Trinity Bellwoods Park
