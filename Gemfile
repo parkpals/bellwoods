@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'better_errors'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
@@ -17,6 +16,7 @@ group :development, :test do
 end
 
 group :development do
+	gem 'better_errors'
   gem 'web-console', '~> 2.0'
 	gem 'sqlite3'
   gem 'spring'
