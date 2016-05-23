@@ -8,13 +8,17 @@ A finder app for Trinity Bellwoods Park
 
 
 ## Models
-* Users
+* User
+	- email (required for login)
+		- or twitter oAuth
+	- password
+
+* Profile
 	- first name
 	- last name
-	- phone number (optional)/email (required for login)
-		- or twitter oAuth
 	- home park (default park)
 	- bio
+	- phone number (optional)
 
 * Meet-invite (temporary: deletes after 12 hours)
 	- Location
