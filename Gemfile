@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'omniauth-twitter'
 gem "paperclip", "~> 4.3"
 gem 'rails', '4.2.5.1'
-gem 'rails_12factor'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
@@ -28,5 +27,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
