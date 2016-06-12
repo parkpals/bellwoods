@@ -4,6 +4,7 @@ class InvitesController < ApplicationController
   end
 
   def new
+  	@invite = Invite.new
   end
 
   def show
