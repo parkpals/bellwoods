@@ -2,37 +2,39 @@
 A friend finder app for Trinity Bellwoods Park
 
 ## App functionality
-* Users can send their location via email to a friend to better find them inside Trinity Bellwoods park
-* Email includes link to unique and temporary instance of a location within the park
-* Page displays map with drop-pin, user you are meeting, and a custom description or message ("Hey, I'm wearing a red shirt over by the dog park")
+	* Users can send their location via email to a friend to better find them inside Trinity Bellwoods park
+	* Email includes link to unique and temporary instance of a location within the park
+	* Page displays map with drop-pin, user you are meeting, and a custom description or message ("Hey, I'm wearing a red shirt over by the dog park")
 
 ## Things to Investigate
-* How to make invited self-destruct after certain time.
-* How to google maps
+	* How to make invited self-destruct after certain time.
+	* How to google maps
 
 ## Models
-* User
+	* User
 	- Email (required for login)
 		- or Twitter oAuth
 	- Password
 
-* Profile
+	* Profile
 	- Name (required)
 	- Avatar (optional)
 
-* Invite
+	* Invite
 	- Location (required, populated with Google geolocation services)
-	- Friends' Emails (required, one text field at a time with +/- buttons to add/remove emails)
+		- Latitude:integer
+		- Longitude:integer
+	- Recipient: Friends' Emails (required, one text field at a time with +/- buttons to add/remove emails)
 	- Message (optional)
-	- Name (user who sent invite)
+	- profile_id (user who sent invite)
 	- Button that sends temporary randomized URL of invite show view to friends' emails
 
-* Parks (ability to add additional parks to the app later)
+	* Parks (ability to add additional parks to the app later)
 	- Location (boundaries)
 	- Map
 	- Landmarks
 
-* Favorite locations (to add later)
+	* Favorite locations (to add later)
 	- Location
 	- Nickname
 	- Description

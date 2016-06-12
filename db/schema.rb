@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20160612155617) do
     t.integer  "user_id"
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer  "latitude"
+    t.integer  "longitude"
+    t.string   "message"
+    t.string   "recipient"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
