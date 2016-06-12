@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'profiles/new'
-
-  get 'profiles/edit'
-
-  get 'profiles/show'
+  resource :profile
 
   devise_for :users
 	
