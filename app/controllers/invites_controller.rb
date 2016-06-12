@@ -1,8 +1,6 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show]
 
-
-
   def index
   end
 
