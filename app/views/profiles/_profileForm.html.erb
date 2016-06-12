@@ -1,0 +1,23 @@
+<%= form_for @profile, :url => profile_path, html: { multipart: true } do |f| %>
+	<% if @profile.errors.any? %>
+		<ul>
+			<% @profile.errors.full_messages.each do |error| %>
+				<li><%= error %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :avatar %>
+		<%= f.file_field :avatar %>
+	</div>
+
+	<div class="field">
+		<%= f.submit %>
+	</div>
+<% end %>
