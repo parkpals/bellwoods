@@ -1,2 +1,4 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1>My profile</h1>
+<%= link_to "Edit Profile", edit_profile_path %>
+<p><%= @profile.name %></p>
+<%= image_tag @profile.avatar.url() %>

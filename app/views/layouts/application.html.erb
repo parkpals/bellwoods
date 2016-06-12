@@ -10,6 +10,10 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>	
 
+<% if user_signed_in? %>
+	<%= link_to "Sign Out", "/users/sign_out", method: 'delete' %>
+<% end %>
+
 <%= yield %>
 
 </body>
