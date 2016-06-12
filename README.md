@@ -6,6 +6,9 @@ A friend finder app for Trinity Bellwoods Park
 * Email includes link to unique and temporary instance of a location within the park
 * Page displays map with drop-pin, user you are meeting, and a custom description or message ("Hey, I'm wearing a red shirt over by the dog park")
 
+## Things to Investigate
+* How to make invited self-destruct after certain time.
+* How to google maps
 
 ## Models
 * User
