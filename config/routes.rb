@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'invites/index'
-
-  get 'invites/new'
-
-  get 'invites/show'
+  resources :invites
 
   devise_for :users
 	
