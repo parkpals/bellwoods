@@ -11,28 +11,30 @@ A friend finder app for Trinity Bellwoods Park
 * How to google maps
 
 ## Models
-* User
+	* User
 	- Email (required for login)
 		- or Twitter oAuth
 	- Password
 
-* Profile
+	* Profile
 	- Name (required)
 	- Avatar (optional)
 
-* Invite
+	* Invite
 	- Location (required, populated with Google geolocation services)
-	- Friends' Emails (required, one text field at a time with +/- buttons to add/remove emails)
+		- Latitude:integer
+		- Longitude:integer
+	- Recipient: Friends' Emails (required, one text field at a time with +/- buttons to add/remove emails)
 	- Message (optional)
 	- Name (user who sent invite)
 	- Button that sends temporary randomized URL of invite show view to friends' emails
 
-* Parks (ability to add additional parks to the app later)
+	* Parks (ability to add additional parks to the app later)
 	- Location (boundaries)
 	- Map
 	- Landmarks
 
-* Favorite locations (to add later)
+	* Favorite locations (to add later)
 	- Location
 	- Nickname
 	- Description
