@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+  
   def index
   end
 
@@ -7,4 +8,5 @@ class InvitesController < ApplicationController
 
   def show
   end
+  
 end
