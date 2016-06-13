@@ -1,13 +1,12 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show]
 
-
-
   def index
   end
 
   def new
   	@invite = Invite.new
+  	@invite_id = SecureRandom.random_number(1_000_000_000)
   end
 
   def create
@@ -30,12 +29,6 @@ private
 
 	def invite_params
 		params.require(:invite).permit(:id, :message, :recipient)
-	end
-
-	def randomize_id
-	  begin
-	    self.id = SecureRandom.random_number(1_000)
-	  end while Invite.where(id: self.id).exists?
 	end
   
 end
