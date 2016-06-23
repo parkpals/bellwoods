@@ -6,8 +6,8 @@ class InviteMailer < ApplicationMailer
 
 	def meet_invite(invite)
 		@invite = invite
-		mail  to: @invite.email,
-					subject: 'Parkpals invite'
+		mail  to: @invite.recipient,
+					subject: "Parkpals invite"
 	end
 
 end
