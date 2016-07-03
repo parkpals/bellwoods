@@ -18,6 +18,7 @@ class InvitesController < ApplicationController
         redirect_to invites_path
     else
       render :new
+      render text: "Uh oh! An error!"
     end
   end
 
