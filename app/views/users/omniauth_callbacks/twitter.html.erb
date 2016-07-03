@@ -1,0 +1,14 @@
+<h2>Please provide your email</h2>
+<%= @user.errors.full_messages.join(", ") %>
+
+<%= form_for @user, url: '/twitter_signup' do |f| %>
+	<%= f.label :email %>
+	<%= f.email_field :email, placeholder: "Email Address" %>
+
+	<%= f.submit "Join" %>
+
+	<%= f.hidden_field :provider %>
+	<%= f.hidden_field :uid %>
+	<%= f.hidden_field :token %>
+	<%= f.hidden_field :secret %>
+<% end %>
