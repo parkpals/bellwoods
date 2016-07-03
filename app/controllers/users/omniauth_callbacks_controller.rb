@@ -1,28 +1,39 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+  def twitter
+    @user = User.where(uid: auth.uid, provider: auth.provider).first_or_initialize
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+    if @user.persisted?
+      @user.update(token: auth.credentials.token, secret: auth.credentials.secret, avatar_url: auth.info.image)
+      sign_in @user
+      redirect_to groups_path
+    else
+      @user.token = auth.credentials.token
+      @user.secret = auth.credentials.secret
+    end
+  end
 
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
+  def twitter_submit
+    provider = params[:user][:provider]
+    uid = params[:user][:uid]
+    token = params[:user][:token]
+    secret = params[:user][:secret]
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+    @user = User.where(uid: uid, provider: provider).first_or_initialize(token: token, secret: secret)
+    @user.password = SecureRandom.uuid
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+    if @user.update(user_params)
+      sign_in @user
+      redirect_to edit_profile_path
+    else    
+      render :twitter
+    end
+  end
 
-  # protected
+  def user_params
+    params.require(:user).permit(:email)
+  end
 
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def auth
+    request.env["omniauth.auth"]
+  end
 end
