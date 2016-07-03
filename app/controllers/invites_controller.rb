@@ -1,22 +1,24 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show]
 
-
-
   def index
   end
 
   def new
-  	@invite = Invite.new
+    @invite = Invite.new
+    @invite_id = SecureRandom.random_number(1_000_000_000)
   end
 
   def create
   	@invite = Invite.create(invite_params)
+    @invite.user_id = current_user.id
   	if @invite.save
-	      redirect_to invite_path(@invite)
-	    else
-	      render :new
-	    end
+      InviteMailer.meet_invite(@invite).deliver
+      flash[:notice] = "Email sent!"
+        redirect_to invites_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -29,13 +31,7 @@ private
 	end
 
 	def invite_params
-		params.require(:invite).permit(:id, :message, :recipient)
-	end
-
-	def randomize_id
-	  begin
-	    self.id = SecureRandom.random_number(1_000)
-	  end while Invite.where(id: self.id).exists?
+		params.require(:invite).permit(:id, :message, :recipient, :user_id)
 	end
   
 end

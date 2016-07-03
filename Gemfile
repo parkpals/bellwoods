@@ -6,6 +6,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'mailgun-ruby'
 gem 'omniauth-twitter'
 gem "paperclip", "~> 4.3"
 gem 'rails', '4.2.5.1'

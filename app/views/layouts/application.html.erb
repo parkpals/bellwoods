@@ -8,9 +8,21 @@
 </head>
 <body>
 <h1><%= link_to "ParkPals!", root_url %></h1>
+<% if user_signed_in? %>
+	<nav>
+		<ul>
+			<li><%= link_to "Home", root_url %></li>
+			<li><%= link_to "New Invite", new_invite_path %></li>
+			<li><%= link_to "My profile", profile_url %></li>
+		</ul>
+	</nav>
+<% end %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>	
 
+<% if !user_signed_in? %>
+	<%= link_to "Sign In", "/users/sign_in" %>
+<% end %>
 <% if user_signed_in? %>
 	<%= link_to "Sign Out", "/users/sign_out", method: 'delete' %>
 <% end %>
