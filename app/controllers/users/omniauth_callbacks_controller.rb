@@ -3,9 +3,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.where(uid: auth.uid, provider: auth.provider).first_or_initialize
 
     if @user.persisted?
-      @user.update(token: auth.credentials.token, secret: auth.credentials.secret, avatar_url: auth.info.image)
+      @user.update(token: auth.credentials.token, secret: auth.credentials.secret)
       sign_in @user
-      redirect_to groups_path
     else
       @user.token = auth.credentials.token
       @user.secret = auth.credentials.secret
