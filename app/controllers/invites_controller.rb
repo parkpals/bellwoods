@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
   	if @invite.save
       InviteMailer.meet_invite(@invite).deliver
       flash[:notice] = "Email sent!"
-        redirect_to invites_path
+        redirect_to invite_path(@invite)
     else
       render :new
       render text: "Uh oh! An error!"
