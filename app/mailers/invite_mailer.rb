@@ -2,7 +2,7 @@ class InviteMailer < ApplicationMailer
 	require 'mailgun'
 
 	# Change this
-	default from: "bookbuddies@sandboxdb186207bc4648cb947c92d270219a9e.mailgun.org"
+	default from: "postmaster@sandboxdb186207bc4648cb947c92d270219a9e.mailgun.org"
 	# You will have to change this!!
 
 	def meet_invite(invite)
