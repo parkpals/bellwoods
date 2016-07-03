@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       @user.update(token: auth.credentials.token, secret: auth.credentials.secret)
       sign_in @user
+      redirect_to root_path
     else
       @user.token = auth.credentials.token
       @user.secret = auth.credentials.secret
