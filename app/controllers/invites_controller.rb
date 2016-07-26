@@ -14,9 +14,9 @@ class InvitesController < ApplicationController
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
   	if @invite.save
-      InviteMailer.meet_invite(@invite).deliver
+      InviteMailer.meet_invite(@invite).deliver_now
       flash[:notice] = "Email sent!"
-      InviteDestroyWorker.perform_in(4.hours, @invite)
+      # InviteDestroyWorker.perform_in(4.hours, @invite)
         redirect_to invite_path(@invite)
     else
       render :new
