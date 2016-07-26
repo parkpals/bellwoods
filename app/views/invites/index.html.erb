@@ -8,7 +8,7 @@
 	  User ID: <%= invite.user_id %></br>
 	  Recipient: <%= invite.recipient %></br>
 	  Message: <%= invite.message %></br>
-	  
+	  <%= link_to "Delete invite", invite_path(invite.id), method: :delete, data: { confirm: "Are you sure?"} %>
 	</div>
 	</br>
 <% end %>

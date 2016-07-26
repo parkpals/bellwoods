@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: [:show]
+  before_action :set_invite, only: [:show, :destroy]
 
   def index
     @invites = Invite.where(user_id: current_user.id).order(created_at: :desc)
@@ -28,7 +28,7 @@ class InvitesController < ApplicationController
   end
 
   def destroy
-    Invite.where(invite_id: @invite.id).destroy
+    @invite.destroy
     redirect_to invites_path, notice: 'Invite has been destroyed'
   end
 
