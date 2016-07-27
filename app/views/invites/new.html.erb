@@ -29,6 +29,14 @@
 
         console.log(pos);
 
+        // Pass location to hidden fields
+        var set_location = function() {
+          $('.user_latitude').val(pos.lat);
+          $('.user_longitude').val(pos.lng);
+        };
+
+        set_location();
+
         infoWindow.setPosition(pos);
         infoWindow.setContent('Your Location');
         map.setCenter(pos);
