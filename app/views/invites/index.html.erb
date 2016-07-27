@@ -3,11 +3,11 @@
 
 <% @invites.each do |invite| %>
 	<div>	
-		Latitude: <%= invite.latitude %></br>
-	  Longitude: <%= invite.longitude %></br>
-	  User ID: <%= invite.user_id %></br>
-	  Recipient: <%= invite.recipient %></br>
-	  Message: <%= invite.message %></br>
+	  <p>User ID: <%= invite.user_id %></p>
+		<p>Recipient: <%= invite.recipient %></p>
+		<p>Message: <%= invite.message %></p>
+		<p>Latitude: <%= invite.latitude %></p>
+		<p>Longitude: <%= invite.longitude %></p>
 	  <%= link_to "Delete invite", invite_path(invite.id), method: :delete, data: { confirm: "Are you sure?"} %>
 	</div>
 	</br>
