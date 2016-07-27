@@ -15,18 +15,26 @@
 <script>
   function initMap() {
 
-  	var set_location = $('.location_information').data('invite');
+  	var user_invite_data = $('.location_information').data('invite');
 
-  	console.log(set_location);
-  	var user_lat = set_location.latitude;
-  	var user_lng = set_location.longitude;
+  	console.log(user_invite_data);
+
+  	var user_lat = user_invite_data.latitude;
+  	var user_lng = user_invite_data.longitude;
+  	var user_name = user_invite_data.recipient;
+
+  	var user_loc = {lat: user_lat, lng: user_lng};
 
     var mapDiv = document.getElementById('map');
     var map = new google.maps.Map(mapDiv, {
-        center: {lat: user_lat, lng: user_lng},
+        center: user_loc,
 		    scrollwheel: false,
         zoom: 20
     });
+
+    var infoWindow = new google.maps.InfoWindow({map: map});
+  	infoWindow.setPosition(user_loc);
+    infoWindow.setContent(user_name + "\'s Location");
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>
