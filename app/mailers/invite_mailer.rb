@@ -6,6 +6,8 @@ class InviteMailer < ApplicationMailer
 	# You will have to change this!!
 
 	def meet_invite(invite)
+		@root_invite_url = "http://localhost:3000/invites/"
+
 		@invite = invite
 		mail to: @invite.recipient,
 		subject: "Parkpals invite"
