@@ -8,4 +8,25 @@
 <p>Latitude: <%= @invite.latitude %></p>
 <p>Longitude: <%= @invite.longitude %></p>
 
-<div class="map">map</div>
+<%= content_tag :div, class: "location_information", data: {invite: @invite} do %>
+<% end %>
+
+<div id="map" style="height: 400px;"></div>
+<script>
+  function initMap() {
+
+  	var set_location = $('.location_information').data('invite');
+
+  	console.log(set_location);
+  	var user_lat = set_location.latitude;
+  	var user_lng = set_location.longitude;
+
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+        center: {lat: user_lat, lng: user_lng},
+		    scrollwheel: false,
+        zoom: 20
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>
