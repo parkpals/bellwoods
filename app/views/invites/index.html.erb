@@ -8,6 +8,9 @@
 		<p>Message: <%= invite.message %></p>
 		<p>Latitude: <%= invite.latitude %></p>
 		<p>Longitude: <%= invite.longitude %></p>
+		<%= link_to "View invite", invite_path(invite.id) %>
+		<br />
+		<br />
 	  <%= link_to "Delete invite", invite_path(invite.id), method: :delete, data: { confirm: "Are you sure?"} %>
 	</div>
 	</br>
