@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703155016) do
+ActiveRecord::Schema.define(version: 20160727183008) do
 
   create_table "invites", force: :cascade do |t|
-    t.integer  "latitude"
-    t.integer  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "message"
     t.string   "recipient"
     t.datetime "created_at", null: false

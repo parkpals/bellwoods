@@ -1,5 +1,40 @@
 <h1>Invites#show</h1>
 <p>Find me in app/views/invites/show.html.erb</p>
 
-<%= @invite.recipient %><br />
-<%= @invite.message %>
+<h1>This is an Invite test!</h1>
+
+<p>Recipient: <%= @invite.recipient %></p>
+<p>Message: <%= @invite.message %></p>
+<p>Latitude: <%= @invite.latitude %></p>
+<p>Longitude: <%= @invite.longitude %></p>
+
+<%= content_tag :div, class: "location_information", data: {invite: @invite} do %>
+<% end %>
+
+<div id="map" style="height: 400px;"></div>
+<script>
+  function initMap() {
+
+  	var user_invite_data = $('.location_information').data('invite');
+
+  	console.log(user_invite_data);
+
+  	var user_lat = user_invite_data.latitude;
+  	var user_lng = user_invite_data.longitude;
+  	var user_name = user_invite_data.recipient;
+
+  	var user_loc = {lat: user_lat, lng: user_lng};
+
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+        center: user_loc,
+		    scrollwheel: false,
+        zoom: 20
+    });
+
+    var infoWindow = new google.maps.InfoWindow({map: map});
+  	infoWindow.setPosition(user_loc);
+    infoWindow.setContent(user_name + "\'s Location");
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>

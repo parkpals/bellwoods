@@ -1,7 +1,9 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: [:show]
+  before_action :authenticate_user!
+  before_action :set_invite, only: [:show, :destroy]
 
   def index
+    @invites = Invite.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new
@@ -13,9 +15,10 @@ class InvitesController < ApplicationController
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
   	if @invite.save
-      InviteMailer.meet_invite(@invite).deliver
+      InviteMailer.meet_invite(@invite).deliver_now
       flash[:notice] = "Email sent!"
-        redirect_to invites_path
+      # InviteDestroyWorker.perform_in(4.hours, @invite)
+        redirect_to invite_path(@invite)
     else
       render :new
       render text: "Uh oh! An error!"
@@ -23,6 +26,19 @@ class InvitesController < ApplicationController
   end
 
   def show
+    if @invite.created_at > 4.hours.ago
+      if !current_user.nil? && current_user.id == @invite.user_id
+          render :show
+      end
+    else
+      @invite.delete
+      redirect_to invites_path, notice: 'Invite is expired and has been destroyed'
+    end
+  end
+
+  def destroy
+    @invite.destroy
+    redirect_to invites_path, notice: 'Invite has been destroyed'
   end
 
 private
@@ -32,7 +48,7 @@ private
 	end
 
 	def invite_params
-		params.require(:invite).permit(:id, :message, :recipient, :user_id)
+		params.require(:invite).permit(:id, :message, :recipient, :user_id, :latitude, :longitude)
 	end
   
 end
