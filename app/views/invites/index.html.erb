@@ -1,6 +1,9 @@
-<h1>Invites#index</h1>
+<h3>Invites#index</h3>
 
-
+<% unless @books.present? %>
+	<p>You don't have any active invites</p>
+	<%= link_to "Create a new invite", new_invite_path %>
+<% end %>
 <% @invites.each do |invite| %>
 	<div>	
 	  <p>User ID: <%= invite.user_id %></p>

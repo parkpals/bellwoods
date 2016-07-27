@@ -26,13 +26,13 @@ class InvitesController < ApplicationController
   end
 
   def show
-    if @invite.created_at > 2.minutes.ago
+    if @invite.created_at > 4.hours.ago
       if !current_user.nil? && current_user.id == @invite.user_id
           render :show
       end
     else
-      redirect_to invites_path
       @invite.delete
+      redirect_to invites_path, notice: 'Invite is expired and has been destroyed'
     end
   end
 
