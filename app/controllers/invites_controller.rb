@@ -27,14 +27,12 @@ class InvitesController < ApplicationController
 
   def show
     if @invite.created_at > 2.minutes.ago
-      render :show
-    else
       if !current_user.nil? && current_user.id == @invite.user_id
           render :show
-      else
-        redirect_to root_path
-        @invite.delete
       end
+    else
+      redirect_to invites_path
+      @invite.delete
     end
   end
 
