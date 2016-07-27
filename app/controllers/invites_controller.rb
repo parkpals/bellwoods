@@ -39,7 +39,7 @@ private
 	end
 
 	def invite_params
-		params.require(:invite).permit(:id, :message, :recipient, :user_id)
+		params.require(:invite).permit(:id, :message, :recipient, :user_id, :latitude, :longitude)
 	end
   
 end
