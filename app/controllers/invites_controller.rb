@@ -33,7 +33,6 @@ class InvitesController < ApplicationController
       @invite.delete
       redirect_to invites_path, notice: 'Invite is expired and has been destroyed'
     end
-    raise
   end
 
   def destroy
