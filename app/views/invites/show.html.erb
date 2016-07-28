@@ -7,8 +7,11 @@
 <p>Message: <%= @invite.message %></p>
 <p>Latitude: <%= @invite.latitude %></p>
 <p>Longitude: <%= @invite.longitude %></p>
+<p>Expires in: <%= distance_of_time_in_words(@invite.expires_in) %></p>
 
 <%= content_tag :div, class: "location_information", data: {invite: @invite} do %>
+<% end %>
+<%= content_tag :div, class: "sender_information", data: {invite: @invite.user.profile} do %>
 <% end %>
 
 <div id="map" style="height: 400px;"></div>
@@ -16,12 +19,11 @@
   function initMap() {
 
   	var user_invite_data = $('.location_information').data('invite');
-
-  	console.log(user_invite_data);
+    var sender_invite_data = $('.sender_information').data('invite');
 
   	var user_lat = user_invite_data.latitude;
   	var user_lng = user_invite_data.longitude;
-  	var user_name = user_invite_data.recipient;
+  	var sender_name = sender_invite_data.name;
 
   	var user_loc = {lat: user_lat, lng: user_lng};
 
@@ -34,7 +36,7 @@
 
     var infoWindow = new google.maps.InfoWindow({map: map});
   	infoWindow.setPosition(user_loc);
-    infoWindow.setContent(user_name + "\'s Location");
+    infoWindow.setContent(sender_name + "\'s Location");
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>

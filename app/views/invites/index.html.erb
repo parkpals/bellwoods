@@ -1,6 +1,6 @@
 <h3>Invites#index</h3>
 
-<% unless @books.present? %>
+<% unless @invites.present? %>
 	<p>You don't have any active invites</p>
 	<%= link_to "Create a new invite", new_invite_path %>
 <% end %>
@@ -11,8 +11,9 @@
 		<p>Message: <%= invite.message %></p>
 		<p>Latitude: <%= invite.latitude %></p>
 		<p>Longitude: <%= invite.longitude %></p>
+		<p>Expires in: <%= distance_of_time_in_words(invite.expires_in) %></p>
 		<p><%= link_to "View invite", invite_path(invite.id) %></p>
-	  <p><%= link_to "Delete invite", invite_path(invite.id), method: :delete, data: { confirm: "Are you sure?"} %></p>
+	  <p><%= link_to "Delete invite", invite_path(invite.id), method: :delete, data: { confirm: "Are you sure? This cannot be undone."} %></p>
 	</div>
 	</br>
 <% end %>

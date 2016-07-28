@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_invite, only: [:show, :destroy]
 
   def index
@@ -16,12 +16,11 @@ class InvitesController < ApplicationController
     @invite.user_id = current_user.id
   	if @invite.save
       InviteMailer.meet_invite(@invite).deliver_now
-      flash[:notice] = "Email sent!"
-      # InviteDestroyWorker.perform_in(4.hours, @invite)
-        redirect_to invite_path(@invite)
+      redirect_to invite_path(@invite)
+      flash[:notice] = "Invite Email has been sent!"
     else
       render :new
-      render text: "Uh oh! An error!"
+      flash[:notice] = "Oh no! An error!"
     end
   end
 
