@@ -6,4 +6,4 @@
 <p>Longitude: <%= @invite.longitude %></p>
 
 <a href="<%= @root_invite_url %><%= @invite.id %>">Click here to view invite</a>
-<p>This invite will expire after 4 hours</p>
+<p>This invite will expire after <%= @invite.expire_time %> <%= "hour".pluralize(@invite.expire_time) %></p>

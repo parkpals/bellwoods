@@ -21,8 +21,11 @@
   	var user_invite_data = $('.location_information').data('invite');
     var sender_invite_data = $('.sender_information').data('invite');
 
+    // console.log(user_invite_data);
+
   	var user_lat = user_invite_data.latitude;
-  	var user_lng = user_invite_data.longitude;
+    var user_lng = user_invite_data.longitude;
+  	// var expire_time = user_invite_data.expire_time;
   	var sender_name = sender_invite_data.name;
 
   	var user_loc = {lat: user_lat, lng: user_lng};

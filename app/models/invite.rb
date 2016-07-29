@@ -8,7 +8,8 @@ class Invite < ActiveRecord::Base
 	belongs_to :user
 
 	def expires_in
-		((4.hours.since self.created_at) - Time.now)
+		expire_time = self.expire_time
+		((expire_time.hours.since self.created_at) - Time.now)
 	end
 
 end
