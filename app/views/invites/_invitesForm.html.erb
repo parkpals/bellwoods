@@ -12,20 +12,19 @@
 	<div class="field user_location">
 		<%= f.hidden_field :latitude, :value => '', :class => 'user_latitude' %>
 		<%= f.hidden_field :longitude, :value => '', :class => 'user_longitude' %>
+		<%= f.hidden_field :expire_time, :value => '4', :class => 'expire_time' %>
 	</div>
 
-	<% if :new  %>
-		<label for="fader">Expire in: </label>
-		<input type="range" min="0.5" max="6" value="4" id="fader" 
-		  step="0.5" oninput="outputUpdate(value)">
-		<output for="fader" id="volume">4</output> hours
+	<label for="fader">Expire in: </label>
+	<input type="range" min="0.5" max="6" value="4" id="expire" 
+	  step="0.5" oninput="outputUpdate(value)">
+	<output for="expire" id="hours">4</output> hours
 
-		<script>
-		  function outputUpdate(vol) {
-		  document.querySelector('#volume').value = vol;
-		}
-		</script>
-	<% end %>
+	<script>
+	  function outputUpdate(hours) {
+	  document.querySelector('#hours').value = hours;
+	}
+	</script>
 
 	<div class="field">
 		<%= f.hidden_field :id, :value => @invite_id %>
