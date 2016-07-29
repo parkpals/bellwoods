@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
   	if @invite.save
-      InviteMailer.meet_invite(@invite).deliver_now
+      InvitesEmailJob.new.async.perform(@invite)
       redirect_to invite_path(@invite)
       flash[:notice] = "Invite Email has been sent!"
     else
