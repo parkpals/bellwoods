@@ -1,6 +1,7 @@
 class Invite < ActiveRecord::Base
 
 	validates :recipient, presence: true
+	validates :message, presence: true
 
 	belongs_to :user
 

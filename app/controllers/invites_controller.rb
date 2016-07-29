@@ -30,7 +30,7 @@ class InvitesController < ApplicationController
           render :show
       end
     else
-      @invite.delete
+      @invite.destroy
       redirect_to pages_expired_path, notice: 'Invite is expired and has been destroyed'
     end
   end
