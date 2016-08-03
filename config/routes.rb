@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/expired'
+
   resource :profile
   resources :invites
 

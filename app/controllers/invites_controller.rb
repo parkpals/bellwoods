@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
   	if @invite.save
-      InviteMailer.meet_invite(@invite).deliver_now
+      InvitesEmailJob.new.async.perform(@invite)
       redirect_to invite_path(@invite)
       flash[:notice] = "Invite Email has been sent!"
     else
@@ -30,8 +30,8 @@ class InvitesController < ApplicationController
           render :show
       end
     else
-      @invite.delete
-      redirect_to invites_path, notice: 'Invite is expired and has been destroyed'
+      @invite.destroy
+      redirect_to pages_expired_path, notice: 'Invite is expired and has been destroyed'
     end
   end
 
@@ -43,7 +43,8 @@ class InvitesController < ApplicationController
 private
 	
 	def set_invite
-		@invite = Invite.find(params[:id])
+		@invite = Invite.find_by_id(params[:id])
+    redirect_to pages_expired_path unless @invite
 	end
 
 	def invite_params

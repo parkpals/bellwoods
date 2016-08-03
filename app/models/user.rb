@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:twitter]
 
 
-  has_many :invites
+  has_many :invites, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
 end

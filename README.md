@@ -50,5 +50,8 @@
 
 ##Notes
 	- We will limit the bounds of the map to Trinity Bellwoods area
-	- Invite index view shows list of active invites and an expiry countdown for each
-	- After invite is created, sender can delete the invite in the index view
+	- Invite index view shows list of active invites and an expiry countdown for each - *DONE*
+	- After invite is created, sender can delete the invite in the index view - *DONE*
+	- Show error if user is outside of park boundaries
+	- Allow user to choose when invite will expire, default to 4 hours.
+	- Add background worker, so page doesn't hang while sending mail
