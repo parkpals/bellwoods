@@ -7,7 +7,7 @@
 <% @invites.each do |invite| %>
 	<div>	
 	  <p>User ID: <%= invite.user_id %></p>
-		<p>Recipient: <%= invite.recipient %></p>
+		<p>Sent from: <%= invite.user.profile.full_name %></p>
 		<p>Message: <%= invite.message %></p>
 		<p>Latitude: <%= invite.latitude %></p>
 		<p>Longitude: <%= invite.longitude %></p>

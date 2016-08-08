@@ -3,7 +3,7 @@
 
 <h1>This is an Invite test!</h1>
 
-<p>Recipient: <%= @invite.recipient %></p>
+<p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
 <p>Message: <%= @invite.message %></p>
 <p>Latitude: <%= @invite.latitude %></p>
 <p>Longitude: <%= @invite.longitude %></p>
@@ -23,7 +23,7 @@
 
   	var user_lat = user_invite_data.latitude;
   	var user_lng = user_invite_data.longitude;
-  	var sender_name = sender_invite_data.name;
+  	var sender_name = sender_invite_data.first_name;
 
   	var user_loc = {lat: user_lat, lng: user_lng};
 
