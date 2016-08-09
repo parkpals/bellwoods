@@ -9,6 +9,7 @@ class InviteMailer < ApplicationMailer
 		@root_invite_url = "http://localhost:3000/invites/"
 
 		@invite = invite
+		@sender = invite.user.profile
 		mail to: @invite.recipient,
 		subject: "Parkpals invite"
 	end
