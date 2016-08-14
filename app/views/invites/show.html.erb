@@ -25,8 +25,9 @@
   	var user_lng = user_invite_data.longitude;
   	var sender_name = sender_invite_data.first_name;
 
-  	var user_loc = {lat: user_lat, lng: user_lng};
-
+  	// var user_loc = {lat: user_lat, lng: user_lng};
+    var user_loc = new google.maps.LatLng(user_lat, user_lng);
+    console.log(user_loc);
     var mapDiv = document.getElementById('map');
     var map = new google.maps.Map(mapDiv, {
         center: user_loc,
