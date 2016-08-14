@@ -35,26 +35,28 @@
           $('.user_longitude').val(pos.lng);
         };
 
-        // Trying something
-           // Bounds for Trinity Bellwoods
-          var strictBounds = new google.maps.LatLngBounds(
-           new google.maps.LatLng(43.644253, -79.418262), 
-           new google.maps.LatLng(43.651266, -79.411527)
-          );
+// Start Boundary experiment
+// *************************
+        // Set bounds for Trinity Bellwoods park
+        var strictBounds = new google.maps.LatLngBounds(
+         new google.maps.LatLng(43.644253, -79.418262), 
+         new google.maps.LatLng(43.651266, -79.411527)
+        );
 
-          console.log("strict bounds: " + strictBounds);
+        console.log("strict bounds: " + strictBounds);
 
-          // Listen for the dragend event
-             if (strictBounds.contains(map.getCenter())) {
-                alert("You are NOT in bellwoods");
-                $("input[type=submit]").remove();
-                return;
-              } else {
-                console.log("In Bellwoods");
-                set_location();
-              }
-        // Stop Trying
-        
+        // Check to see if user in within set boundary
+        if (strictBounds.contains(map.getCenter())) {
+        alert("You are NOT in bellwoods");
+        // Remove form, so user cannot submit an invite. This is a temporary solution.
+        // $("#new_invite").remove();
+        return;
+        } else {
+          console.log("You are in Bellwoods");
+          set_location(); // Keep this function call if you remove experiment code above!!
+        }
+// End Boundary experiment
+// ***********************
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('Your Location');
