@@ -47,9 +47,10 @@
 
         // Check to see if user in within set boundary
         if (strictBounds.contains(map.getCenter())) {
-        alert("You are NOT in bellwoods");
+        console.log("You are NOT in bellwoods");
         // Remove form, so user cannot submit an invite. This is a temporary solution.
-        // $("#new_invite").remove();
+        $("#new_invite").remove();
+        $("#map").html("<p>Sorry, Looks like you are not in bellwooods. Git to the park and try again.</p>")
         return;
         } else {
           console.log("You are in Bellwoods");
