@@ -8,9 +8,10 @@
   function initMap() {
 
   	var mapOptions = {
-  		center: new google.maps.LatLng(43.646355, -79.413582),
+  		center: new google.maps.LatLng(43.647916, -79.414684),
 	    zoom: 16,
 	    scrollwheel: false,
+      draggable: false,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
   	}
 
@@ -34,7 +35,30 @@
           $('.user_longitude').val(pos.lng);
         };
 
-        set_location();
+// Start Boundary experiment
+// *************************
+        // Set bounds for Trinity Bellwoods park
+        var strictBounds = new google.maps.LatLngBounds(
+         new google.maps.LatLng(43.644253, -79.418262), 
+         new google.maps.LatLng(43.651266, -79.411527)
+        );
+
+        console.log("strict bounds: " + strictBounds);
+
+        // Check to see if user in within set boundary
+        if (strictBounds.contains(map.getCenter())) {
+          console.log("You are NOT in bellwoods");
+          // Remove form, so user cannot submit an invite. This is a temporary solution.
+          $("#new_invite").remove();
+          // Find a better way to replace map with useful info.
+          $("#map").html("<p>Sorry, Looks like you are not in bellwooods. Git to the park and try again.</p>")
+          return;
+        } else {
+          console.log("You are in Bellwoods");
+          set_location(); // Keep this function call if you remove experiment code above!!
+        }
+// End Boundary experiment
+// ***********************
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('Your Location');
@@ -42,6 +66,7 @@
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
       });
+
     } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
