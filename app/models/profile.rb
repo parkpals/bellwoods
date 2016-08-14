@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
 
 	belongs_to :user
 	
-	has_attached_file :avatar, :default_url => 'avatar.jpg', styles: { medium: "250x250#", thumb: "150x150#" }
+	has_attached_file :avatar, :default_url => 'avatar.jpg', styles: { medium: "250x250#", thumb: "150x150#", marker: "55x55#" }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 	def full_name
