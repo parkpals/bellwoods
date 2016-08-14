@@ -25,6 +25,7 @@ class InvitesController < ApplicationController
   end
 
   def show
+      @profile = @invite.user.profile
     if @invite.created_at > 4.hours.ago
       if !current_user.nil? && current_user.id == @invite.user_id
           render :show
