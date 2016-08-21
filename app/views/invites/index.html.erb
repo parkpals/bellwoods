@@ -9,6 +9,7 @@
 	  <!-- <p>User ID: <%= invite.user_id %></p> -->
 		<!-- <p>Sent from: <%= invite.user.profile.full_name %></p> -->
 		<p>Created on <%= invite.created_at.strftime("%d %B %Y") %></p>
+		<p>Invited: <%= invite.recipient %></p>
 		<p>Message: <%= invite.message %></p>
 		<!-- <p>Latitude: <%= invite.latitude %></p> -->
 		<!-- <p>Longitude: <%= invite.longitude %></p> -->
