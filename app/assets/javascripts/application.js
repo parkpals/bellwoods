@@ -14,10 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 
-//= require target/mediator.min
-//= require target/MutationObserver
-//= require target/proto.es5
 //= require target/weakmap
+//= require target/MutationObserver
+//= require target/mediator.min
+//= require target/proto.es5
 //= require target/target.js
 
 //= require_tree .
