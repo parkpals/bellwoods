@@ -1,7 +1,9 @@
 <h1>Invitation</h1>
 <p>This invite was created on <%= @invite.created_at.strftime("%d %B %Y") %></p>
 
-<p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
+<% unless current_user %>
+  <p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
+<% end %>
 <p>Message: <%= @invite.message %></p>
 <!-- <p>Latitude: <%= @invite.latitude %></p> -->
 <!-- <p>Longitude: <%= @invite.longitude %></p> -->
