@@ -1,12 +1,10 @@
-<h1>Invites#show</h1>
-<p>Find me in app/views/invites/show.html.erb</p>
+<h1>Invitation</h1>
+<p>This invite was created on <%= @invite.created_at.strftime("%d %B %Y") %></p>
 
-<h1>This is an Invite test!</h1>
-
-<p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
+<% unless current_user %>
+  <p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
+<% end %>
 <p>Message: <%= @invite.message %></p>
-<p>Latitude: <%= @invite.latitude %></p>
-<p>Longitude: <%= @invite.longitude %></p>
 <p>Expires in: <%= distance_of_time_in_words(@invite.expires_in) %></p>
 
 <%= content_tag :div, class: "location_information", data: {invite: @invite} do %>

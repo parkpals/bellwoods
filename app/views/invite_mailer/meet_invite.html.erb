@@ -1,9 +1,9 @@
-<h1>This is an email test!</h1>
+<h1>You've been invited to meet a friend in Trinity Bellwoods Park</h1>
 
 <p>Sent from: <%= @sender.abrev_name %>.</p>
 <p>Message: <%= @invite.message %></p>
-<p>Latitude: <%= @invite.latitude %></p>
-<p>Longitude: <%= @invite.longitude %></p>
+<!-- <p>Latitude: <%= @invite.latitude %></p> -->
+<!-- <p>Longitude: <%= @invite.longitude %></p> -->
 
 <a href="<%= @root_invite_url %><%= @invite.id %>">Click here to view invite</a>
 <p>This invite will expire after <%= @invite.expire_time %> <%= "hour".pluralize(@invite.expire_time) %></p>
