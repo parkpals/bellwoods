@@ -10,8 +10,8 @@
 		<!-- <p>Sent from: <%= invite.user.profile.full_name %></p> -->
 		<p>Created on <%= invite.created_at.strftime("%d %B %Y") %></p>
 		<p>Message: <%= invite.message %></p>
-		<p>Latitude: <%= invite.latitude %></p>
-		<p>Longitude: <%= invite.longitude %></p>
+		<!-- <p>Latitude: <%= invite.latitude %></p> -->
+		<!-- <p>Longitude: <%= invite.longitude %></p> -->
 	
 	<% if invite.created_at > 4.hours.ago %>
 		<p>Expires in: <%= distance_of_time_in_words(invite.expires_in) %></p>
