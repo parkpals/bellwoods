@@ -1,17 +1,15 @@
-<h3>Invites#index</h3>
+<h3>Your active Invites</h3>
 
 <% unless @invites.present? %>
 	<p>You don't have any active invites</p>
 	<%= link_to "Create a new invite", new_invite_path %>
 <% end %>
 <% @invites.each do |invite| %>
-	<div>	
-	  <p>User ID: <%= invite.user_id %></p>
-		<p>Sent from: <%= invite.user.profile.full_name %></p>
+	<div class="invite">	
+		<p>Created on <%= invite.created_at.strftime("%d %B %Y") %></p>
+		<p>Invited: <%= invite.recipient %></p>
 		<p>Message: <%= invite.message %></p>
-		<p>Latitude: <%= invite.latitude %></p>
-		<p>Longitude: <%= invite.longitude %></p>
-	
+
 	<% if invite.created_at > 4.hours.ago %>
 		<p>Expires in: <%= distance_of_time_in_words(invite.expires_in) %></p>
 	<% else %>
