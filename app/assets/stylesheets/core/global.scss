@@ -1,0 +1,92 @@
+body {
+	font-family: $copyFont;
+	color: $text;
+	background: $bg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+h1 {
+	a {
+		color: $text;
+		@include font-size(36);
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+a {
+	color: $accent;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+	&.primary {
+		color: $primary;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+p.alert {
+	color: $red;
+}
+
+.template--pad {
+	padding: 60px 0;
+}
+
+.template--wrapper {
+	@include grid-column(6, $center:true);
+	background-color: $white;
+	padding: 40px;
+	@media #{$mobile-only}{
+		@include grid-column(10);
+		padding: 20px;
+	}
+}
+
+// Forms
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+	border: none;
+	background: $gray;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	border: none;
+}
+
+label {
+	display: block;
+}
+
+.box-shadow {
+	box-shadow: 0px 0px 2px 0px rgba(1,1,1,0.1);
+}
+
+.ul--reset {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+main {
+	min-height: calc(100vh - (160px + 87px));
+}
