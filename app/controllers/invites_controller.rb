@@ -4,16 +4,20 @@ class InvitesController < ApplicationController
 
   def index
     @invites = Invite.where(user_id: current_user.id).order(created_at: :desc)
+    @profile = current_user.profile
   end
 
   def new
     @invite = Invite.new
     @invite_id = SecureRandom.random_number(1_000_000_000)
+    @profile = current_user.profile
   end
 
   def create
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
+    @profile = current_user.profile
+
   	if @invite.save
       InvitesEmailJob.new.async.perform(@invite)
       redirect_to invite_path(@invite)
@@ -25,7 +29,7 @@ class InvitesController < ApplicationController
   end
 
   def show
-      @profile = @invite.user.profile
+    @profile = @invite.user.profile
     if @invite.created_at > 4.hours.ago
       if !current_user.nil? && current_user.id == @invite.user_id
           render :show

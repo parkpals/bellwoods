@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812152207) do
+ActiveRecord::Schema.define(version: 20160822012340) do
 
   create_table "invites", force: :cascade do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.decimal  "latitude",    precision: 15, scale: 10
+    t.decimal  "longitude",   precision: 15, scale: 10
     t.string   "message"
     t.string   "recipient"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.float    "expire_time"
   end

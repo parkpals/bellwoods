@@ -14,8 +14,8 @@
 <style type="text/css">
     .marker {
 
-      /* Inluding CSS here for now */
-      background-image: url(<%= @profile.avatar.url(:thumb) %>);
+      /* Including CSS here for now */
+      background-image: url(<%= @invite.user.profile.avatar.url(:thumb) %>);
       background-size: cover;
       background-repeat:  no-repeat;
       background-position: center;
@@ -40,8 +40,10 @@
     }
 </style>
 <div id="map" style="height: 400px;"></div>
-<script>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>
+
+<script>
   function initMap() {
 
   	var user_invite_data = $('.location_information').data('invite');
@@ -54,6 +56,9 @@
     function initialize() {
 
       var myLatlng = new google.maps.LatLng(user_lat, user_lng);
+
+      console.log(user_lat);
+      console.log(user_lng);
 
       var mapOptions = {
         zoom: 20,
@@ -122,4 +127,3 @@
     };
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10&callback=initMap"></script>
