@@ -1,7 +1,6 @@
 class Invite < ActiveRecord::Base
 
 	validates :recipient, presence: true
-	validates_format_of :recipient,:with => Devise::email_regexp
 	validates :message, presence: true
 	validates :latitude, presence: true
 	validates :longitude, presence: true
