@@ -1,42 +1,7 @@
 <h1>Create an Invite</h1>
 <%= render 'invitesForm' %>
-<!-- 
-<style type="text/css">
-    .marker {
-      /* Including CSS here for now */
-      background-image: url(<%= asset_path(@profile.avatar.url(:thumb)) %>);
-      background-size: cover;
-      background-repeat:  no-repeat;
-      background-position: center;
-      width: 55px;
-      height:  55px;
-      border-radius: 50%;
-      border:  5px solid #aaa;
-      position: relative;
-    }
-
-    .marker::after {
-      content:  "";
-      width: 0; 
-      height: 0; 
-      position: absolute;
-      bottom:  -18px;
-      z-index:  -1;
-      left:  calc(50% - 20px);
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-top: 20px solid #aaa;
-    }
-</style> -->
 
 <div id="map" style="height: 400px;"></div>
-
-<!-- <script>
-  $.getScript('/assets/maps/mapnew.js',function(){
-    $(document).ready(newMapReady); // adds script to page
-    $(document).on('turbolinks:load',newMapReady); // the same as above but for turbolinked pages
-  });
-</script> -->
 
 <script>
   var handler = Gmaps.build('Google');
