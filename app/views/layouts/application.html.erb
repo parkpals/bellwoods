@@ -4,6 +4,10 @@
   <title>Bellwoods</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :javascripts %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf1VWB16nqD-V2R0L1ucjcSzFHE-niH10"></script>
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

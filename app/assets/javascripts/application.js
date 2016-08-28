@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 
@@ -19,5 +20,7 @@
 //= require target/mediator.min
 //= require target/proto.es5
 //= require target/target.js
+//= require underscore
+//= require gmaps/google
 
 //= require_tree .
