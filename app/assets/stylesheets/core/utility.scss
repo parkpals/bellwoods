@@ -1,0 +1,50 @@
+// Links
+
+.a--reset {
+  text-decoration: underline;
+}
+
+// Text Alignment
+
+.text--center {
+  text-align: center;
+}
+
+.text--right {
+  text-align: right;
+}
+
+// Padding
+
+.pad {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+// Layout
+
+.left {
+  float: left;
+}
+
+.sticky {
+	position: absolute;
+	width: 100%;
+}
+
+.rel {
+	position: relative;
+}
+
+// Visibility
+
+.visually-hidden {
+	position: absolute;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0;
+	border: 0;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
