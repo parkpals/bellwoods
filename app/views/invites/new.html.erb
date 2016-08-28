@@ -1,11 +1,10 @@
 <h1>Create an Invite</h1>
-
 <%= render 'invitesForm' %>
 
 <style type="text/css">
     .marker {
       /* Including CSS here for now */
-      background-image: url(<%= @profile.avatar.url(:thumb) %>);
+      background-image: url(<%= asset_path(@profile.avatar.url(:thumb)) %>);
       background-size: cover;
       background-repeat:  no-repeat;
       background-position: center;
@@ -56,7 +55,7 @@
 
           var mapOptions = {
             center: myLatlng,
-            zoom: 16,
+            zoom: 18,
             scrollwheel: false,
             draggable: false
           }
