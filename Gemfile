@@ -16,6 +16,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sucker_punch', '~> 1.0.1'
 gem 'turbolinks'
+gem 'underscore-rails'
+gem 'jquery-turbolinks'
+gem 'gmaps4rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
