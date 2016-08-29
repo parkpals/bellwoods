@@ -35,7 +35,11 @@
 
     var marker = handler.addMarker({
       lat: sender_lat,
-      lng: sender_lng
+      lng: sender_lng,
+      "picture": {
+        "url": '<%= asset_path(@invite.user.profile.avatar.url(:thumb)) %>',
+        "width":  55,
+      }
     });
 
     handler.map.centerOn(marker);

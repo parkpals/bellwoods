@@ -25,7 +25,12 @@
   function displayOnMap(position){
     var marker = handler.addMarker({
       lat: position.coords.latitude,
-      lng: position.coords.longitude
+      lng: position.coords.longitude,
+      "picture": {
+        "url": '<%= asset_path(@profile.avatar.url(:marker)) %>',
+        "width":  55,
+        "height": 55
+      }
     });
 
     // Pass location to hidden fields
