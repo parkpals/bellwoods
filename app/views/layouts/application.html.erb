@@ -32,10 +32,13 @@
 <% end %>
 
 <%= yield %>
+<%= insert_paloma_hook %>
 
 <script>
     (function(){
 	    target.init();
+
+	    Paloma.start();
     })();
 </script>
 </body>

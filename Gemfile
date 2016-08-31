@@ -20,6 +20,7 @@ gem 'underscore-rails'
 gem 'jquery-turbolinks'
 gem 'gmaps4rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'paloma', '~> 5.0.0'
 
 group :development, :test do
   gem 'byebug'
