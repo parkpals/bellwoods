@@ -13,36 +13,3 @@
 <% end %>
 
 <div id="map" style="height: 400px;"></div>
-
-<script>
-  var user_invite_data = $('.location_information').data('invite');
-  var sender_lat = user_invite_data.latitude;
-  var sender_lng = user_invite_data.longitude;
-
-  handler = Gmaps.build('Google');
-
-  handler.buildMap({ 
-    provider: { 
-      zoom: 18, 
-      disableDefaultUI: true, 
-      scrollwheel: false,
-      draggable: false 
-    }, 
-    internal: {
-      id: 'map'
-    } 
-  }, function(){
-
-    var marker = handler.addMarker({
-      lat: sender_lat,
-      lng: sender_lng,
-      "picture": {
-        "url": '<%= asset_path(@invite.user.profile.avatar.url(:thumb)) %>',
-        "width":  55,
-        "height": 55
-      }
-    });
-
-    handler.map.centerOn(marker);
-  });
-</script>

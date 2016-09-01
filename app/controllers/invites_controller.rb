@@ -11,6 +11,8 @@ class InvitesController < ApplicationController
     @invite = Invite.new
     @invite_id = SecureRandom.random_number(1_000_000_000)
     @profile = current_user.profile
+
+    js :avatar => ActionController::Base.helpers.asset_path(@profile.avatar.url(:marker))
   end
 
   def create
@@ -30,6 +32,9 @@ class InvitesController < ApplicationController
 
   def show
     @profile = @invite.user.profile
+
+    js :avatar => ActionController::Base.helpers.asset_path(@invite.user.profile.avatar.url(:marker))
+
     if @invite.created_at > 4.hours.ago
       if !current_user.nil? && current_user.id == @invite.user_id
           render :show

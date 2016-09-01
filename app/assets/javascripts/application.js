@@ -20,6 +20,7 @@
 //= require target/mediator.min
 //= require target/proto.es5
 //= require target/target.js
+//= require paloma
 //= require underscore
 //= require gmaps/google
 
