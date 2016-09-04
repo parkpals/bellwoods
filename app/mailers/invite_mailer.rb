@@ -10,7 +10,7 @@ class InviteMailer < ApplicationMailer
 
 		@invite = invite
 		@sender = invite.user.profile
-		mail to: @invite.recipient,
+		mail bcc: @invite.recipient,
 		subject: "Parkpals invite"
 	end
 
