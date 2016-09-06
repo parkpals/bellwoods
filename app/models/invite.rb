@@ -12,4 +12,8 @@ class Invite < ActiveRecord::Base
 		((expire_time.hours.since self.created_at) - Time.now)
 	end
 
+  def email_to_arr
+    self.recipient.split(/[,\s]+/)
+  end
+
 end
