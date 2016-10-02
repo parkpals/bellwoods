@@ -67,30 +67,18 @@ InvitesController.prototype.new = function(){
    // ================
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 43.647720, lng: -79.414208},
-        zoom: 16,
+        zoom: 16
       });
 
-      var bermudaTriangle = new google.maps.Polygon(geofenceCoords);
+      var bellwoods = new google.maps.Polygon(geofenceCoords);
 
-      google.maps.event.addListener(map, 'click', function(e) {
-        var resultColor =
-            google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle) ?
-            'red' :
-            'green';
+      var myLOC = new google.maps.LatLng(43.647293, -79.414015);
+      // var myLOC = {lat: 43.647293, lng: -79.414015};
 
-        new google.maps.Marker({
-          position: e.latLng,
-          map: map,
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: resultColor,
-            fillOpacity: .2,
-            strokeColor: 'white',
-            strokeWeight: .5,
-            scale: 10
-          }
-        });
-      });
+        var result =
+            google.maps.geometry.poly.containsLocation(myLOC, bellwoods);
+        console.log(result);
+
    // Experiment END
    // ================
 
