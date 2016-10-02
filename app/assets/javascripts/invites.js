@@ -35,13 +35,13 @@ var geofenceCoords = {
   ]
 };
 
-var polygons_options = {
-      strokeColor: '#000000',
-      strokeOpacity: 0.5,
-      strokeWeight: 3,
-      fillColor: '#43A54F',
-      fillOpacity: 0.35
-    }
+// var polygons_options = {
+//       strokeColor: '#000000',
+//       strokeOpacity: 0.5,
+//       strokeWeight: 3,
+//       fillColor: '#43A54F',
+//       fillOpacity: 0.35
+//     }
 
 InvitesController.prototype.new = function(){
    var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
@@ -69,18 +69,26 @@ InvitesController.prototype.new = function(){
       center: {lat: 43.647720, lng: -79.414208},
       zoom: 16
     });
-
-    var bellwoods = new google.maps.Polygon(geofenceCoords);
+    var paths = geofenceCoords.paths;
+    var bellwoods = new google.maps.Polygon({
+          paths: paths,
+          strokeColor: '#000000',
+          strokeOpacity: 0.5,
+          strokeWeight: 3,
+          fillColor: '#43A54F',
+          fillOpacity: 0.35
+        });
     var inside = new google.maps.LatLng(43.647293, -79.414015);
     var outside = new google.maps.LatLng(43.647293, -80.414015);
     var result =
         google.maps.geometry.poly.containsLocation(inside, bellwoods);
     console.log(result);
+    bellwoods.setMap(map);
    // Geofence Experiment END
    // =======================
 
    // Build polygon
-   handler.addPolygons(geofenceCoords, polygons_options);
+   // handler.addPolygons(geofenceCoords, polygons_options);
 
 
    function displayOnMap(position){
