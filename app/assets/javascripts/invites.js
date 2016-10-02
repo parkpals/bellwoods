@@ -63,8 +63,40 @@ InvitesController.prototype.new = function(){
      }
    });
 
+   // Geofence Experiment START
+   // ================
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 43.647720, lng: -79.414208},
+        zoom: 16,
+      });
+
+      var bermudaTriangle = new google.maps.Polygon(geofenceCoords);
+
+      google.maps.event.addListener(map, 'click', function(e) {
+        var resultColor =
+            google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle) ?
+            'red' :
+            'green';
+
+        new google.maps.Marker({
+          position: e.latLng,
+          map: map,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: resultColor,
+            fillOpacity: .2,
+            strokeColor: 'white',
+            strokeWeight: .5,
+            scale: 10
+          }
+        });
+      });
+   // Experiment END
+   // ================
+
    // Build polygon
    handler.addPolygons(geofenceCoords, polygons_options);
+
 
    function displayOnMap(position){
 
