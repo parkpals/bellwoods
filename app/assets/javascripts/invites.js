@@ -50,7 +50,7 @@ InvitesController.prototype.new = function(){
    handler.buildMap({ 
      provider: { 
        zoom: 18, 
-       disableDefaultUI: true, 
+       disableDefaultUI: false, 
        scrollwheel: false,
        draggable: false
      }, 
