@@ -2,28 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.marker {
-  position:  absolute;
-  background-size: cover;
-  background-repeat:  no-repeat;
-  background-position: center;
-  width: 55px;
-  height:  55px;
+.custom_marker_content {
+  // padding: 4px;
+  text-align: center;
   border-radius: 50%;
-  border:  5px solid #aaa;
-  position: relative;
+  background-color: #ccc;
+  width: 65px;
+  height: 65px;
 
   &:after {
     content:  "";
     width: 0; 
     height: 0; 
     position: absolute;
-    bottom:  -18px;
+    bottom:  -8px;
     z-index:  -1;
-    left:  calc(50% - 20px);
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #aaa;
+    left:  calc(50% - 10px);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
   }
+}
+.marker_img {
+  border-radius: 50%;
+  position: relative;
+  top: 5px;
+  display: inline-block;
 }
