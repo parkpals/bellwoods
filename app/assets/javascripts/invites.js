@@ -64,23 +64,20 @@ InvitesController.prototype.new = function(){
    });
 
    // Geofence Experiment START
-   // ================
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 43.647720, lng: -79.414208},
-        zoom: 16
-      });
+   // =========================
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 43.647720, lng: -79.414208},
+      zoom: 16
+    });
 
-      var bellwoods = new google.maps.Polygon(geofenceCoords);
-
-      var myLOC = new google.maps.LatLng(43.647293, -79.414015);
-      // var myLOC = {lat: 43.647293, lng: -79.414015};
-
-        var result =
-            google.maps.geometry.poly.containsLocation(myLOC, bellwoods);
-        console.log(result);
-
-   // Experiment END
-   // ================
+    var bellwoods = new google.maps.Polygon(geofenceCoords);
+    var inside = new google.maps.LatLng(43.647293, -79.414015);
+    var outside = new google.maps.LatLng(43.647293, -80.414015);
+    var result =
+        google.maps.geometry.poly.containsLocation(inside, bellwoods);
+    console.log(result);
+   // Geofence Experiment END
+   // =======================
 
    // Build polygon
    handler.addPolygons(geofenceCoords, polygons_options);
