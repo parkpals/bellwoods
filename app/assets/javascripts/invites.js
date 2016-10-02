@@ -44,7 +44,7 @@ var polygons_options = {
     }
 
 InvitesController.prototype.new = function(){
-   var handler = Gmaps.build('Google');
+   var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
    var avatar_url = this.params.avatar;
 
    handler.buildMap({ 
@@ -71,11 +71,7 @@ InvitesController.prototype.new = function(){
      var marker = handler.addMarker({
        lat: position.coords.latitude,
        lng: position.coords.longitude,
-       "picture": {
-         "url": avatar_url,
-         "width":  55,
-         "height": 55
-       }
+       custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
      });
 
      // Pass location to hidden fields
@@ -95,7 +91,7 @@ InvitesController.prototype.show = function(){
 	var sender_lng = user_invite_data.longitude;
 	var avatar_url = this.params.avatar;
 
-	handler = Gmaps.build('Google');
+	var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
 
 	handler.buildMap({ 
 	 provider: { 
@@ -112,11 +108,7 @@ InvitesController.prototype.show = function(){
 	 var marker = handler.addMarker({
 	   lat: sender_lat,
 	   lng: sender_lng,
-	   "picture": {
-	     "url": avatar_url,
-	     "width":  55,
-	     "height": 55
-	   }
+	   custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
 	 });
 
 	 handler.map.centerOn(marker);
