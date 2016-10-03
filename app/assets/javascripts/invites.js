@@ -1,7 +1,7 @@
 var InvitesController = Paloma.controller('Invites');
 
 // geofence polygon array
-var geofenceCoords = {
+var bellwoodsCoords = {
   paths: [
     {lat: 43.649849, lng: -79.418321},
     {lat: 43.650074, lng: -79.417209},
@@ -34,9 +34,9 @@ var geofenceCoords = {
     {lat: 43.649536, lng: -79.418178}
   ]
 };
-var paths = geofenceCoords.paths;
+var bellwoodsPaths = bellwoodsCoords.paths;
 var bellwoods = new google.maps.Polygon({
-  paths: paths,
+  paths: bellwoodsPaths,
   strokeColor: '#000000',
   strokeOpacity: 0.5,
   strokeWeight: 3,
@@ -92,7 +92,7 @@ InvitesController.prototype.new = function(){
   
     var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
 
-      console.log("inside map? " + inBounds);
+    console.log("inside map? " + inBounds);
       
     var currentmap = handler.getMap();
     bellwoods.setMap(currentmap);
