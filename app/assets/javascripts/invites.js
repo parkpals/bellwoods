@@ -1,7 +1,7 @@
 var InvitesController = Paloma.controller('Invites');
 
 // geofence polygon array
-var geofenceCoords = {
+var bellwoodsCoords = {
   paths: [
     {lat: 43.649849, lng: -79.418321},
     {lat: 43.650074, lng: -79.417209},
@@ -34,23 +34,24 @@ var geofenceCoords = {
     {lat: 43.649536, lng: -79.418178}
   ]
 };
-
-var polygons_options = {
-      strokeColor: '#000000',
-      strokeOpacity: 0.5,
-      strokeWeight: 3,
-      fillColor: '#43A54F',
-      fillOpacity: 0.35
-    }
+var bellwoodsPaths = bellwoodsCoords.paths;
+var bellwoods = new google.maps.Polygon({
+  paths: bellwoodsPaths,
+  strokeColor: '#000000',
+  strokeOpacity: 0.5,
+  strokeWeight: 3,
+  fillColor: '#43A54F',
+  fillOpacity: 0.35
+});
 
 InvitesController.prototype.new = function(){
    var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
    var avatar_url = this.params.avatar;
 
-   handler.buildMap({ 
+   var map = handler.buildMap({ 
      provider: { 
        zoom: 18, 
-       disableDefaultUI: true, 
+       disableDefaultUI: false, 
        scrollwheel: false,
        draggable: false
      }, 
@@ -63,27 +64,40 @@ InvitesController.prototype.new = function(){
      }
    });
 
-   // Build polygon
-   handler.addPolygons(geofenceCoords, polygons_options);
 
-   function displayOnMap(position){
+  function displayOnMap(position){
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var marker = handler.addMarker({
+      lat: lat,
+      lng: lng,
+      custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
+    });
+    var userLOC = new google.maps.LatLng(lat, lng);
 
-     var marker = handler.addMarker({
-       lat: position.coords.latitude,
-       lng: position.coords.longitude,
-       custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
-     });
+    // Pass location to hidden fields
+    var set_location = function() {
+      $('.user_latitude').val(lat);
+      $('.user_longitude').val(lng);
+    };
 
-     // Pass location to hidden fields
-     var set_location = function() {
-       $('.user_latitude').val(position.coords.latitude);
-       $('.user_longitude').val(position.coords.longitude);
-     };
-
-     handler.map.centerOn(marker);
-     set_location();
-   };
+    handler.map.centerOn(marker);
+    set_location();
+    geoFence(userLOC);
   };
+
+  // Apply Geofence, check user location
+  var geoFence = function(userLOC) {
+    console.log("Start geoFence()");
+  
+    var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
+
+    console.log("inside map? " + inBounds);
+      
+    var currentmap = handler.getMap();
+    bellwoods.setMap(currentmap);
+  };
+};
 
 InvitesController.prototype.show = function(){
 	var user_invite_data = $('.location_information').data('invite');
@@ -96,7 +110,7 @@ InvitesController.prototype.show = function(){
 	handler.buildMap({ 
 	 provider: { 
 	   zoom: 18, 
-	   disableDefaultUI: true, 
+	   disableDefaultUI: false, 
 	   scrollwheel: false,
 	   draggable: false
 	 }, 
@@ -115,5 +129,6 @@ InvitesController.prototype.show = function(){
 	});
 
   // Build polygon
-  handler.addPolygons(geofenceCoords, polygons_options);
+  var currentmap = handler.getMap();
+  bellwoods.setMap(currentmap);
 };
