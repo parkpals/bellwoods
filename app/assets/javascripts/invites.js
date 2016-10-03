@@ -34,20 +34,21 @@ var geofenceCoords = {
     {lat: 43.649536, lng: -79.418178}
   ]
 };
-
-// var polygons_options = {
-//       strokeColor: '#000000',
-//       strokeOpacity: 0.5,
-//       strokeWeight: 3,
-//       fillColor: '#43A54F',
-//       fillOpacity: 0.35
-//     }
+var paths = geofenceCoords.paths;
+var bellwoods = new google.maps.Polygon({
+  paths: paths,
+  strokeColor: '#000000',
+  strokeOpacity: 0.5,
+  strokeWeight: 3,
+  fillColor: '#43A54F',
+  fillOpacity: 0.35
+});
 
 InvitesController.prototype.new = function(){
    var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
    var avatar_url = this.params.avatar;
 
-   handler.buildMap({ 
+   var map = handler.buildMap({ 
      provider: { 
        zoom: 18, 
        disableDefaultUI: false, 
@@ -63,51 +64,42 @@ InvitesController.prototype.new = function(){
      }
    });
 
-   // Geofence Experiment START
-   // =========================
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 43.647720, lng: -79.414208},
-      zoom: 16
-    });
-    var paths = geofenceCoords.paths;
-    var bellwoods = new google.maps.Polygon({
-          paths: paths,
-          strokeColor: '#000000',
-          strokeOpacity: 0.5,
-          strokeWeight: 3,
-          fillColor: '#43A54F',
-          fillOpacity: 0.35
-        });
-    var inside = new google.maps.LatLng(43.647293, -79.414015);
-    var outside = new google.maps.LatLng(43.647293, -80.414015);
-    var result =
-        google.maps.geometry.poly.containsLocation(inside, bellwoods);
-    console.log(result);
-    bellwoods.setMap(map);
-   // Geofence Experiment END
-   // =======================
-
-   // Build polygon
-   // handler.addPolygons(geofenceCoords, polygons_options);
-
 
    function displayOnMap(position){
-
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
      var marker = handler.addMarker({
-       lat: position.coords.latitude,
-       lng: position.coords.longitude,
+       lat: lat,
+       lng: lng,
        custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
      });
+     var userLOC = new google.maps.LatLng(lat, lng);
 
      // Pass location to hidden fields
      var set_location = function() {
-       $('.user_latitude').val(position.coords.latitude);
-       $('.user_longitude').val(position.coords.longitude);
+       $('.user_latitude').val(lat);
+       $('.user_longitude').val(lng);
      };
 
      handler.map.centerOn(marker);
      set_location();
+     geoFence(userLOC);
    };
+
+   // Geofence Experiment START
+   // =========================
+    var geoFence = function(userLOC) {
+      console.log("Start geoFence()");
+  
+      var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
+
+      console.log("inside map? " + inBounds);
+      
+      var currentmap = handler.getMap();
+      bellwoods.setMap(currentmap);
+    };
+   // Geofence Experiment END
+   // =======================
   };
 
 InvitesController.prototype.show = function(){
@@ -121,7 +113,7 @@ InvitesController.prototype.show = function(){
 	handler.buildMap({ 
 	 provider: { 
 	   zoom: 18, 
-	   disableDefaultUI: true, 
+	   disableDefaultUI: false, 
 	   scrollwheel: false,
 	   draggable: false
 	 }, 
@@ -140,5 +132,6 @@ InvitesController.prototype.show = function(){
 	});
 
   // Build polygon
-  handler.addPolygons(geofenceCoords, polygons_options);
+  var currentmap = handler.getMap();
+  bellwoods.setMap(currentmap);
 };
