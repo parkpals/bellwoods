@@ -65,42 +65,39 @@ InvitesController.prototype.new = function(){
    });
 
 
-   function displayOnMap(position){
+  function displayOnMap(position){
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-     var marker = handler.addMarker({
-       lat: lat,
-       lng: lng,
-       custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
-     });
-     var userLOC = new google.maps.LatLng(lat, lng);
+    var marker = handler.addMarker({
+      lat: lat,
+      lng: lng,
+      custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
+    });
+    var userLOC = new google.maps.LatLng(lat, lng);
 
-     // Pass location to hidden fields
-     var set_location = function() {
-       $('.user_latitude').val(lat);
-       $('.user_longitude').val(lng);
-     };
+    // Pass location to hidden fields
+    var set_location = function() {
+      $('.user_latitude').val(lat);
+      $('.user_longitude').val(lng);
+    };
 
-     handler.map.centerOn(marker);
-     set_location();
-     geoFence(userLOC);
-   };
+    handler.map.centerOn(marker);
+    set_location();
+    geoFence(userLOC);
+  };
 
-   // Geofence Experiment START
-   // =========================
-    var geoFence = function(userLOC) {
-      console.log("Start geoFence()");
+  // Apply Geofence, check user location
+  var geoFence = function(userLOC) {
+    console.log("Start geoFence()");
   
-      var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
+    var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
 
       console.log("inside map? " + inBounds);
       
-      var currentmap = handler.getMap();
-      bellwoods.setMap(currentmap);
-    };
-   // Geofence Experiment END
-   // =======================
+    var currentmap = handler.getMap();
+    bellwoods.setMap(currentmap);
   };
+};
 
 InvitesController.prototype.show = function(){
 	var user_invite_data = $('.location_information').data('invite');
