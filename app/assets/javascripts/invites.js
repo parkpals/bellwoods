@@ -86,6 +86,11 @@ InvitesController.prototype.new = function(){
     geoFence(userLOC);
   };
 
+  var notInPark = function() {
+    // Temporary validation of user location
+    alert("You are not in Trinity Bellwoods park. Considering going to there? ¯\_(ツ)_/¯");
+  };
+
   // Apply Geofence, check user location
   var geoFence = function(userLOC) {
     console.log("Start geoFence()");
@@ -96,6 +101,10 @@ InvitesController.prototype.new = function(){
       
     var currentmap = handler.getMap();
     bellwoods.setMap(currentmap);
+
+    if (!inBounds) {
+      notInPark();
+    };
   };
 };
 
