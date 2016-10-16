@@ -53,10 +53,10 @@
 	- We will limit the bounds of the map to Trinity Bellwoods area *in progress/DONE*
 	- Invite index view shows list of active invites and an expiry countdown for each - *DONE*
 	- After invite is created, sender can delete the invite in the index view - *DONE*
-	- Show error if user is outside of park boundaries *in progress/DONE*
-	- Allow user to choose when invite will expire, default to 4 hours. *DONE*
+	- Show error/alert/message if user is outside of park boundaries *in progress/DONE*
+	- Allow user to choose when invite will expire, default is 4 hours. *DONE*
 	- Add background worker, so page doesn't hang while sending mail *DONE*
-	- Show directions to park if user is outside of park bounds
+	- Show directions to park if user is outside of park bounds *In Progress*
 	- Show direction in park from user location to meetpoint
 	- Create new model for invite emails, and associate it with the invite. Allow app to send emails to all 
 ```

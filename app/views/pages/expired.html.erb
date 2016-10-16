@@ -2,3 +2,6 @@
 <p>Find me in app/views/pages/expired.html.erb</p>
 
 <h2>LOL, this invite has expired, or does not exist!</h2>
+<% if user_signed_in? %>
+	<%= link_to "Return to Active Invites", invites_path %>
+<% end %>
