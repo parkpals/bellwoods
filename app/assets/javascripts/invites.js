@@ -88,7 +88,7 @@ InvitesController.prototype.new = function(){
 
   var notInPark = function() {
     // Temporary validation of user location
-    alert("You are not in Trinity Bellwoods park. Considering going to there? ¯\_(ツ)_/¯");
+    alert("You are not in Trinity Bellwoods park. Considering going to there? ¯\\_(ツ)_/¯");
   };
 
   // Apply Geofence, check user location
