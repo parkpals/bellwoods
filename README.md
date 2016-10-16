@@ -58,5 +58,6 @@
 	- Add background worker, so page doesn't hang while sending mail *DONE*
 	- Show directions to park if user is outside of park bounds *In Progress*
 	- Show direction in park from user location to meetpoint
-	- Create new model for invite emails, and associate it with the invite. Allow app to send emails to all 
+	- Create new model for invite emails, and associate it with the invite. Allow app to send emails to all\
+	- Create a message for user if not connected to internet, or do not have a GPS/geo-location turned on
 ```
