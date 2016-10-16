@@ -31,6 +31,8 @@
 
 	<div class="field">
 		<%= f.hidden_field :id, :value => @invite_id %>
-		<%= f.submit class: 'button' %>
+		<%= f.submit class: 'button', id: 'js__form-submit' %>
+
+    <a id="js__get-directions" class="form__get-directions" href="javascript:void(0);">Get Directions</a>
 	</div>
 <% end %>

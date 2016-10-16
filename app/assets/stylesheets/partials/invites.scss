@@ -23,9 +23,18 @@
     border-top: 10px solid #ccc;
   }
 }
+
 .marker_img {
   border-radius: 50%;
   position: relative;
   top: 5px;
   display: inline-block;
+}
+
+.form__get-directions {
+  display: none;
+
+  &.target-active {
+    display: inline-block;
+  }
 }
