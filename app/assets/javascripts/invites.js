@@ -34,7 +34,9 @@ var bellwoodsCoords = {
     {lat: 43.649536, lng: -79.418178}
   ]
 };
+
 var bellwoodsPaths = bellwoodsCoords.paths;
+
 var bellwoods = new google.maps.Polygon({
   paths: bellwoodsPaths,
   strokeColor: '#000000',
@@ -64,15 +66,16 @@ InvitesController.prototype.new = function(){
      }
    });
 
-
   function displayOnMap(position){
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
+
     var marker = handler.addMarker({
       lat: lat,
       lng: lng,
       custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
     });
+
     var userLOC = new google.maps.LatLng(lat, lng);
 
     // Pass location to hidden fields
@@ -86,24 +89,52 @@ InvitesController.prototype.new = function(){
     geoFence(userLOC);
   };
 
-  var notInPark = function() {
-    // Temporary validation of user location
-    alert("You are not in Trinity Bellwoods park. Considering going to there? ¯\_(ツ)_/¯");
-  };
+  function calcRoute(origin, destination) {
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+
+    var request = {
+      origin:      origin,
+      destination: destination,
+      travelMode:  google.maps.TravelMode.WALKING
+    };
+
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        $('#js__form-submit')
+          .attr("disabled", "disabled");
+
+        $('#js__get-directions')
+          .addClass('target-active');
+
+        directionsDisplay.setDirections(response);
+
+        $('#js__get-directions').on("click", function(e){
+          handler.buildMap({ 
+            provider: { 
+              scrollwheel: false,
+            },
+            internal: {
+              id: 'map'
+            }
+          }, function(){
+            directionsDisplay.setMap(handler.getMap());
+          });
+        });
+      }
+    });
+  }
 
   // Apply Geofence, check user location
-  var geoFence = function(userLOC) {
-    console.log("Start geoFence()");
-  
+  var geoFence = function(userLOC) {  
     var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
-
-    console.log("inside map? " + inBounds);
-      
+    var bellwoodsCoords = new google.maps.LatLng(43.649849, -79.418321);      
     var currentmap = handler.getMap();
+
     bellwoods.setMap(currentmap);
 
     if (!inBounds) {
-      notInPark();
+      calcRoute(userLOC, bellwoodsCoords);
     };
   };
 };
