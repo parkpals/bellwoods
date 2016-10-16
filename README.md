@@ -1,5 +1,5 @@
 # bellwoods
-	A friend finder app for Trinity Bellwoods Park
+	A friend-finder app for Trinity Bellwoods Park
 
 ## App functionality
 	* Users can send their location via email to a friend to better find them inside Trinity Bellwoods park
