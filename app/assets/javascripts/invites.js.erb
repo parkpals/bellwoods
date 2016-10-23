@@ -187,6 +187,7 @@ InvitesController.prototype.show = function(){
     handler.map.centerOn(senderMarker);
   });
 
+  // Run directions calculation, and place on map
   function calcRoute(origin, destination) {
     console.log("calc route");
     var directionsDisplay = new google.maps.DirectionsRenderer();
