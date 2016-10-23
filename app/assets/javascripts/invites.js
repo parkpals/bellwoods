@@ -140,122 +140,35 @@ InvitesController.prototype.new = function(){
 };
 
 InvitesController.prototype.show = function(){
-  var user_invite_data = $('.location_information').data('invite');
-  var sender_lat = user_invite_data.latitude;
-  var sender_lng = user_invite_data.longitude;
-  var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
-  var avatar_url = this.params.avatar;
-  var senderLOC = new google.maps.LatLng(sender_lat, sender_lng);
+	var user_invite_data = $('.location_information').data('invite');
+	var sender_lat = user_invite_data.latitude;
+	var sender_lng = user_invite_data.longitude;
+	var avatar_url = this.params.avatar;
 
-  var map = handler.buildMap({ 
-   provider: { 
-     zoom: 18, 
-     disableDefaultUI: false, 
-     scrollwheel: false,
-     draggable: false
-   }, 
-   internal: {
-     id: 'map'
-   } 
- }, function(){
-   if(navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(displayOnMap);
-   }
- });
+	var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
 
-  function displayOnMap(position){
-    var user_lat = position.coords.latitude;
-    var user_lng = position.coords.longitude;
+	handler.buildMap({ 
+	 provider: { 
+	   zoom: 18, 
+	   disableDefaultUI: false, 
+	   scrollwheel: false,
+	   draggable: false
+	 }, 
+	 internal: {
+	   id: 'map'
+	 } 
+	}, function(){
 
-    var marker = handler.addMarker({
-      lat: user_lat,
-      lng: user_lng,
-      custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
-    });
+	 var marker = handler.addMarker({
+	   lat: sender_lat,
+	   lng: sender_lng,
+	   custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
+	 });
 
-    var userLOC = new google.maps.LatLng(user_lat, user_lng);
+	 handler.map.centerOn(marker);
+	});
 
-    handler.map.centerOn(marker);
-    geoFence(userLOC);
-  };
-
-  function calcRoute(origin, destination) {
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    var directionsService = new google.maps.DirectionsService();
-
-    var request = {
-      origin:      origin,
-      destination: destination,
-      travelMode:  google.maps.TravelMode.WALKING
-    };
-
-    directionsService.route(request, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        $('#js__form-submit')
-        .attr("disabled", "disabled");
-
-        $('#js__get-directions')
-        .addClass('target-active');
-
-        directionsDisplay.setDirections(response);
-
-        $('#js__get-directions').on("click", function(e){
-          handler.buildMap({ 
-            provider: { 
-              scrollwheel: false,
-            },
-            internal: {
-              id: 'map'
-            }
-          }, function(){
-            directionsDisplay.setMap(handler.getMap());
-          });
-        });
-      }
-    });
-  }
-
-  // Apply Geofence, check user location
-  var geoFence = function(userLOC) {  
-    // var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
-    // var bellwoodsCoords = new google.maps.LatLng(43.649849, -79.418321);      
-    var currentmap = handler.getMap();
-
-    bellwoods.setMap(currentmap);
-
-    // calcRoute(userLOC, senderLOC);
-
-  };
+  // Build polygon
+  var currentmap = handler.getMap();
+  bellwoods.setMap(currentmap);
 };
-
-  // var user_invite_data = $('.location_information').data('invite');
-  // var sender_lat = user_invite_data.latitude;
-  // var sender_lng = user_invite_data.longitude;
-  // var avatar_url = this.params.avatar;
-
-  // var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
-
-  // handler.buildMap({ 
-  //  provider: { 
-  //    zoom: 18, 
-  //    disableDefaultUI: false, 
-  //    scrollwheel: false,
-  //    draggable: false
-  //  }, 
-  //  internal: {
-  //    id: 'map'
-  //  } 
-  // }, function(){
-
-  //  var marker = handler.addMarker({
-  //    lat: sender_lat,
-  //    lng: sender_lng,
-  //    custom_marker: "<img class='marker_img' src='" + avatar_url + "'>"
-  //  });
-
-  //  handler.map.centerOn(marker);
-  // });
-
-  // // Build polygon
-  // var currentmap = handler.getMap();
-  // bellwoods.setMap(currentmap);
