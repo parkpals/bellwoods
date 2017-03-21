@@ -19,14 +19,15 @@ class InvitesController < ApplicationController
   	@invite = Invite.create(invite_params)
     @invite.user_id = current_user.id
     @profile = current_user.profile
-
-  	if @invite.save
-      InvitesEmailJob.new.async.perform(@invite)
-      redirect_to invite_path(@invite)
-      flash[:notice] = "Invite Email has been sent!"
-    else
-      render :new
-      flash[:notice] = "Oh no! An error!"
+    respond_to do |format|
+      if @invite.save
+        InvitesEmailJob.new.async.perform(@invite)
+        format.html { redirect_to invite_path(@invite), notice: 'Invite Email has been sent!' }
+        format.json { render :show, status: :created, location: @invite }
+      else
+        format.html { render :new, notice: 'Oh no! An error!' }
+        format.json { render json: @invite.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -47,7 +48,10 @@ class InvitesController < ApplicationController
 
   def destroy
     @invite.destroy
-    redirect_to invites_path, notice: 'Invite has been destroyed'
+    respond_to do |format|
+      format.html { redirect_to invites_path, notice: 'Invite has been destroyed' }
+      format.json { head :no_content }
+    end
   end
 
 private
