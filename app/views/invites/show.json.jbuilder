@@ -1,4 +1,3 @@
 json.loc do
-	json.latitude @invite.latitude
-	json.longitude @invite.longitude
+	json.(@invite, :latitude, :longitude)
 end
