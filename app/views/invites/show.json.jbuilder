@@ -1,7 +1,4 @@
-json.location do
-	
-end
-
-json.sender do
-	
+json.loc do
+	json.latitude @invite.latitude
+	json.longitude @invite.longitude
 end
