@@ -133,6 +133,7 @@ InvitesController.prototype.new = function(){
 
     bellwoods.setMap(currentmap);
 
+    // If not in the park, calculate route to park.
     if (!inBounds) {
       calcRoute(userLOC, bellwoodsCoords);
     };
