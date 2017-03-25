@@ -40,6 +40,7 @@ GEM
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    axios_rails (0.7.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -218,6 +219,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-v1
+  axios_rails (~> 0.7.0)
   better_errors
   byebug
   coffee-rails (~> 4.1.0)
@@ -247,4 +249,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.14.3

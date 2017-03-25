@@ -133,6 +133,7 @@ InvitesController.prototype.new = function(){
 
     bellwoods.setMap(currentmap);
 
+    // If not in the park, calculate route to park.
     if (!inBounds) {
       calcRoute(userLOC, bellwoodsCoords);
     };
@@ -140,10 +141,23 @@ InvitesController.prototype.new = function(){
 };
 
 InvitesController.prototype.show = function(){
+  var sender_lat, sender_lng;
+  var url = window.location.href + ".json"
 
-  var user_invite_data = $('.location_information').data('invite');
-  var sender_lat = user_invite_data.latitude;
-  var sender_lng = user_invite_data.longitude;
+  // Call local API, get location data.
+  axios.get(url)
+    .then(function(response) {
+      setSenderLatLng(response);
+    })
+    .catch(function(error) {
+      return error;
+    });
+
+  function setSenderLatLng(response) {
+    sender_lat = response.data.loc.latitude;
+    sender_lng = response.data.loc.longitude;
+  }
+
   var sender_avatar_url = this.params.avatar;
   var senderLOC = new google.maps.LatLng(sender_lat, sender_lng);
 
