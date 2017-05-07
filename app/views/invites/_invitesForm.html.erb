@@ -1,12 +1,12 @@
 <%= form_for @invite do |f| %>
-	<div class="field">
+	<div class="field recipient">
 		<%= f.label :recipient, "Recipient email" %>
 		<%= f.text_field :recipient %>
 		<small>Comma separate for multiple recipients</small>
 		<!-- <i class="fa fa-plus-circle recipient-email__add" aria-hidden="true"></i> -->
 	</div>
 
-	<div class="field">
+	<div class="field message">
 		<%= f.label :message %>
 		<%= f.text_area :message %>
 	</div>
@@ -17,10 +17,12 @@
 		<%= f.hidden_field :expire_time, :value => '4', :class => 'expire_time' %>
 	</div>
 
-	<label for="fader">Expire in: </label>
-	<input type="range" min="0.5" max="6" value="4" id="expire" 
-	  step="0.5" oninput="outputUpdate(value)">
-	<output for="expire" id="hours">4</output> hours
+	<div class="field expire-in">
+		<label for="fader">Expire in: </label>
+		<input type="range" min="0.5" max="6" value="4" id="expire" 
+		  step="0.5" oninput="outputUpdate(value)">
+		<output for="expire" id="hours">4</output> hours
+	</div>
 
 	<script>
 	  function outputUpdate(hours) {

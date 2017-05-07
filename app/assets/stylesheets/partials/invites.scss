@@ -47,3 +47,10 @@ main {
     flex: 1;
   }
 }
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: sliderthumb-horizontal;
+  -moz-appearance: sliderthumb-horizontal;
+  -ms-appearance: sliderthumb-horizontal;
+  appearance: sliderthumb-horizontal;
+ }

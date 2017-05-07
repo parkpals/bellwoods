@@ -1,8 +1,8 @@
 body {
 	min-height: 100vh;
 	// font-family: $copyFont;
-	// color: $text;
-	// background: $bg;
+	color: $text;
+	background: $bg;
 }
 
 h1,
@@ -31,7 +31,7 @@ a {
 		text-decoration: underline;
 	}
 	&.primary {
-		// color: $primary;
+		color: $primary;
 	}
 }
 
@@ -40,21 +40,11 @@ img {
 }
 
 p.alert {
-	// color: $red;
+	color: $red;
 }
 
 .template--pad {
 	padding: 60px 0;
-}
-
-.template--wrapper {
-	// @include grid-column(6, $center:true);
-	// background-color: $white;
-	// padding: 40px;
-	// @media #{$mobile-only}{
-	// 	@include grid-column(10);
-	// 	padding: 20px;
-	// }
 }
 
 // Forms
@@ -64,7 +54,7 @@ input[type="email"],
 input[type="password"],
 textarea {
 	border: none;
-	// background: $gray;
+	background: $gray;
 	width: 100%;
 	padding: 10px;
 	border-radius: 5px;
@@ -88,6 +78,9 @@ label {
 	margin: 0;
 }
 
-main {
-	// min-height: calc(100vh - (160px + 87px));
+.button {
+	border: none;
+	background: lightgrey;
+	padding: 10px;
+	border-radius: 5px;
 }
