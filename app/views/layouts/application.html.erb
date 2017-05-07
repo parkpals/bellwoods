@@ -21,20 +21,20 @@
 				<li><%= link_to "New Invite", new_invite_path %></li>
 				<li><%= link_to "Active invites", invites_url %></li>
 				<li><%= link_to "My profile", profile_url %></li>
+				<% if user_signed_in? %>
+				<li><%= link_to "Sign Out", "/users/sign_out", method: 'delete' %></li>
+				<% end %>
 			</ul>
 		</i>
 	</nav>
 	<% end %>
+	
+	<% if !user_signed_in? %>
+		<%= link_to "Sign In", "/users/sign_in" %>
+	<% end %>
 </header>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>	
-
-<% if !user_signed_in? %>
-	<%= link_to "Sign In", "/users/sign_in" %>
-<% end %>
-<% if user_signed_in? %>
-	<%= link_to "Sign Out", "/users/sign_out", method: 'delete' %>
-<% end %>
 
 <%= yield %>
 

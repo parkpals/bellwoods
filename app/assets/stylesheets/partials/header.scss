@@ -5,6 +5,10 @@ header {
 	.ham-menu {
 		font-size: 2rem;
 	}
+	h1 {
+		padding: 10px;
+		margin: 0;
+	}
 	nav {
 		position: relative;
 		display: inline-block;
@@ -15,7 +19,7 @@ header {
 		}
 	}
 	ul {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		list-style: none;
 		padding: 0;
 		margin: 0;
