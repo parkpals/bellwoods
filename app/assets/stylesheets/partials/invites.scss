@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .custom_marker_content {
-  // padding: 4px;
   text-align: center;
   border-radius: 50%;
   background-color: #ccc;
@@ -36,5 +35,15 @@
 
   &.target-active {
     display: inline-block;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100vh - 57px);
+  .map-container {
+    flex: 1;
   }
 }

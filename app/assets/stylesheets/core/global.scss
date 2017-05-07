@@ -1,7 +1,8 @@
 body {
-	font-family: $copyFont;
-	color: $text;
-	background: $bg;
+	min-height: 100vh;
+	// font-family: $copyFont;
+	// color: $text;
+	// background: $bg;
 }
 
 h1,
@@ -15,8 +16,8 @@ h6 {
 
 h1 {
 	a {
-		color: $text;
-		@include font-size(36);
+		// color: $text;
+		// @include font-size(36);
 		&:hover {
 			text-decoration: none;
 		}
@@ -24,13 +25,13 @@ h1 {
 }
 
 a {
-	color: $accent;
+	// color: $accent;
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
 	}
 	&.primary {
-		color: $primary;
+		// color: $primary;
 	}
 }
 
@@ -39,7 +40,7 @@ img {
 }
 
 p.alert {
-	color: $red;
+	// color: $red;
 }
 
 .template--pad {
@@ -47,13 +48,13 @@ p.alert {
 }
 
 .template--wrapper {
-	@include grid-column(6, $center:true);
-	background-color: $white;
-	padding: 40px;
-	@media #{$mobile-only}{
-		@include grid-column(10);
-		padding: 20px;
-	}
+	// @include grid-column(6, $center:true);
+	// background-color: $white;
+	// padding: 40px;
+	// @media #{$mobile-only}{
+	// 	@include grid-column(10);
+	// 	padding: 20px;
+	// }
 }
 
 // Forms
@@ -63,7 +64,7 @@ input[type="email"],
 input[type="password"],
 textarea {
 	border: none;
-	background: $gray;
+	// background: $gray;
 	width: 100%;
 	padding: 10px;
 	border-radius: 5px;
@@ -88,5 +89,5 @@ label {
 }
 
 main {
-	min-height: calc(100vh - (160px + 87px));
+	// min-height: calc(100vh - (160px + 87px));
 }

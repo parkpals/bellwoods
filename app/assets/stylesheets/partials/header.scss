@@ -2,6 +2,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: #A3CCFF;
 	.ham-menu {
 		font-size: 2rem;
 	}
@@ -26,6 +27,7 @@ header {
 		position: absolute;
 		background: rgba(#fff, 0.75);
 		right: 0;
+		top: 50px;
 		display: none;
 		padding: 5px;
 		width: auto;
