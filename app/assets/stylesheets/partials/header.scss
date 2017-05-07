@@ -1,0 +1,34 @@
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.ham-menu {
+		font-size: 2rem;
+	}
+	nav {
+		position: relative;
+		display: inline-block;
+		padding: 10px;
+		cursor: pointer;
+		&:hover ul {
+			display: block;
+		}
+	}
+	ul {
+		font-size: 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		background: rgba(#fff, 0.75);
+		right: 0;
+		display: none;
+		padding: 5px;
+		width: auto;
+		line-height: 1.2;
+		text-align: right;
+		li {
+			white-space: nowrap;
+		}
+	}
+}

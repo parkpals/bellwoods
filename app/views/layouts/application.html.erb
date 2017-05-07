@@ -11,17 +11,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1><%= link_to "ParkPals!", root_url %></h1>
-<% if user_signed_in? %>
+<header>
+	<h1><%= link_to "ParkPals!", root_url %></h1>
+	<% if user_signed_in? %>
 	<nav>
-		<ul>
-			<li><%= link_to "Home", root_url %></li>
-			<li><%= link_to "New Invite", new_invite_path %></li>
-			<li><%= link_to "Active invites", invites_url %></li>
-			<li><%= link_to "My profile", profile_url %></li>
-		</ul>
+		<i class="fa fa-bars ham-menu">
+			<ul>
+				<li><%= link_to "Home", root_url %></li>
+				<li><%= link_to "New Invite", new_invite_path %></li>
+				<li><%= link_to "Active invites", invites_url %></li>
+				<li><%= link_to "My profile", profile_url %></li>
+			</ul>
+		</i>
 	</nav>
-<% end %>
+	<% end %>
+</header>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>	
 
