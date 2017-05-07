@@ -10,11 +10,14 @@ header {
 		padding: 10px;
 		margin: 0;
 	}
-	nav {
+	button.nav {
 		position: relative;
 		display: inline-block;
 		padding: 10px;
 		cursor: pointer;
+		border: none;
+		background: none;
+		&:focus ul,
 		&:hover ul {
 			display: block;
 		}

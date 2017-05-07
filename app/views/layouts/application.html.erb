@@ -14,19 +14,21 @@
 <header>
 	<h1><%= link_to "ParkPals!", root_url %></h1>
 	<% if user_signed_in? %>
-	<nav>
-		<i class="fa fa-bars ham-menu">
-			<ul class="ul--reset">
-				<li><%= link_to "Home", root_url %></li>
-				<li><%= link_to "New Invite", new_invite_path %></li>
-				<li><%= link_to "Active invites", invites_url %></li>
-				<li><%= link_to "My profile", profile_url %></li>
-				<% if user_signed_in? %>
-				<li><%= link_to "Sign Out", "/users/sign_out", method: 'delete' %></li>
-				<% end %>
-			</ul>
-		</i>
-	</nav>
+
+		<button class="nav">
+			<i class="fa fa-bars ham-menu">
+				<ul class="ul--reset">
+					<li><%= link_to "Home", root_url %></li>
+					<li><%= link_to "New Invite", new_invite_path %></li>
+					<li><%= link_to "Active invites", invites_url %></li>
+					<li><%= link_to "My profile", profile_url %></li>
+					<% if user_signed_in? %>
+					<li><%= link_to "Sign Out", "/users/sign_out", method: 'delete' %></li>
+					<% end %>
+				</ul>
+			</i>
+		</button>
+
 	<% end %>
 	
 	<% if !user_signed_in? %>
