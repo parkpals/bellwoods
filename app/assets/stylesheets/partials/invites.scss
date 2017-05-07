@@ -34,6 +34,21 @@
   }
 }
 
+.field + .field {
+  margin-top: 15px;
+}
+
+.range {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  input[type="range"] {
+    width: calc(100% - 80px)
+  }
+  output {
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;

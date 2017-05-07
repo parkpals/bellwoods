@@ -19,9 +19,11 @@
 
 	<div class="field expire-in">
 		<label for="fader">Expire in: </label>
-		<input type="range" min="0.5" max="6" value="4" id="expire" 
-		  step="0.5" oninput="outputUpdate(value)">
-		<output for="expire" id="hours">4</output> hours
+		<div class="range">
+			<input type="range" min="0.5" max="6" value="4" id="expire" 
+			  step="0.5" oninput="outputUpdate(value)">
+			<output for="expire" id="hours">4</output> hours
+		</div>
 	</div>
 
 	<script>
