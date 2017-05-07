@@ -42,6 +42,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  align-items: center;
   input[type="range"] {
     width: calc(100% - 80px)
   }
