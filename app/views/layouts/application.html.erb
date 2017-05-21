@@ -11,35 +11,52 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1><%= link_to "ParkPals!", root_url %></h1>
-<% if user_signed_in? %>
-	<nav>
-		<ul>
-			<li><%= link_to "Home", root_url %></li>
-			<li><%= link_to "New Invite", new_invite_path %></li>
-			<li><%= link_to "Active invites", invites_url %></li>
-			<li><%= link_to "My profile", profile_url %></li>
+<header>
+	<div class="wrapper">
+		<nav>
+			<h1><%= link_to "ParkPals!", root_url %></h1>
+			<% if user_signed_in? %>
+				<button class="nav" id="nav">
+					<i class="fa fa-bars ham-menu"></i>
+				</button>
+			<% else %>
+				<%= link_to "Sign In", "/users/sign_in", class: 'btn btn--round' %>
+			<% end %>
+		</nav>
+		<ul class="ul--reset">
+			<li>
+				<%= link_to "Home", root_url %>
+			</li>
+			<li>
+				<%= link_to "New Invite", new_invite_path %>
+			</li>
+			<li>
+				<%= link_to "Active invites", invites_url %>
+			</li>
+			<li>
+				<%= link_to "My profile", profile_url %>
+			</li>
+			<% if user_signed_in? %>
+			<li>
+				<%= link_to "Sign Out", "/users/sign_out", method: 'delete', class: 'btn btn--round' %>
+			</li>
+			<% end %>
 		</ul>
-	</nav>
-<% end %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>	
-
-<% if !user_signed_in? %>
-	<%= link_to "Sign In", "/users/sign_in" %>
-<% end %>
-<% if user_signed_in? %>
-	<%= link_to "Sign Out", "/users/sign_out", method: 'delete' %>
-<% end %>
-
-<%= yield %>
+	</div>
+</header>
+<main>
+		<!-- <p class="notice"><%= notice %></p> -->
+		<!-- <p class="alert"><%= alert %></p>	 -->
+	<div class="wrapper">
+		<%= yield %>
+	</div>
+</main>
 
 <%= insert_paloma_hook %>
 
 <script>
     (function(){
 	    target.init();
-
 	    Paloma.start();
     })();
 </script>

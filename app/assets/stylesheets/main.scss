@@ -1,14 +1,15 @@
 // Global Styles
 @import "core/setup.scss";
-// @import "core/colors.scss";
+@import "core/colors.scss";
 // @import "core/fonts.scss";
 @import "core/media.scss";
 @import "core/foundation.scss";
 @import "core/grid.scss";
-// @import "core/global.scss";
+@import "core/global.scss";
 @import "core/utility.scss";
 
 // Partials
+@import "partials/header.scss";
 @import "partials/home.scss";
 @import "partials/invites.scss";
 @import "partials/pages.scss";

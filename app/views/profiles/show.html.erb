@@ -1,4 +1,8 @@
-<h1>My profile</h1>
-<%= link_to "Edit Profile", edit_profile_path %>
-<p><%= @profile.full_name %></p>
-<%= image_tag @profile.avatar.url(:thumb) %>
+<div class="wrapper">	
+	<h2>My profile</h2>
+	<%= link_to "Edit Profile", edit_profile_path %>
+	<p><%= @profile.full_name %></p>
+	<div class="avatar">
+		<%= image_tag @profile.avatar.url(:thumb) %>
+	</div>
+</div>
