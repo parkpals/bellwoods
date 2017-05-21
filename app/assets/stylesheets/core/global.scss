@@ -13,6 +13,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	font-family: 'Bungee Hairline', cursive;
 }
 
 h2 {
@@ -22,8 +23,6 @@ h2 {
 
 h1 {
 	a {
-		// color: $text;
-		// @include font-size(36);
 		&:hover {
 			text-decoration: none;
 		}
