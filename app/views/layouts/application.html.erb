@@ -20,7 +20,7 @@
 					<i class="fa fa-bars ham-menu"></i>
 				</button>
 			<% else %>
-				<%= link_to "Sign In", "/users/sign_in", class: 'button' %>
+				<%= link_to "Sign In", "/users/sign_in", class: 'btn btn--round' %>
 			<% end %>
 		</nav>
 		<ul class="ul--reset">
@@ -38,7 +38,7 @@
 			</li>
 			<% if user_signed_in? %>
 			<li>
-				<%= link_to "Sign Out", "/users/sign_out", method: 'delete', class: 'button' %>
+				<%= link_to "Sign Out", "/users/sign_out", method: 'delete', class: 'btn btn--round' %>
 			</li>
 			<% end %>
 		</ul>

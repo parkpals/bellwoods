@@ -88,9 +88,14 @@ label {
 	margin: 0 auto;
 }
 
-.button {
-	border: none;
-	background: lightgrey;
-	padding: 10px;
-	border-radius: 5px;
+.btn {
+	color: #FFF;
+  background-color: #3498DB;
+  box-shadow: inset 0px 0px 0px 2px transparent;
+  &--round {
+	  padding: 10px 30px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 999px;
+  }
 }
