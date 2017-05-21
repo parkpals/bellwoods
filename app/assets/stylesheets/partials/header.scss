@@ -27,16 +27,18 @@ header {
 	}
 	ul {
 		font-size: 1.2rem;
-		background: rgba(#fff, 0.75);
 		line-height: 1.2;
 		text-align: center;
 		max-height: 0;
 		overflow: hidden;
 		transition: all 1s ease;
-		li {
-			display: block;
+		a {
+			display: inline-block;
 			white-space: nowrap;
-			padding: 0 10px;
+			padding: 5px 10px;
+		}
+		.button {
+			margin-bottom: 10px;
 		}
 	}
 	&.nav_open {

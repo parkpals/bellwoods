@@ -16,25 +16,32 @@
 		<nav>
 			<h1><%= link_to "ParkPals!", root_url %></h1>
 			<% if user_signed_in? %>
-
 				<button class="nav" id="nav">
 					<i class="fa fa-bars ham-menu"></i>
 				</button>
+			<% else %>
+				<%= link_to "Sign In", "/users/sign_in", class: 'button' %>
 			<% end %>
 		</nav>
 		<ul class="ul--reset">
-			<li><%= link_to "Home", root_url %></li>
-			<li><%= link_to "New Invite", new_invite_path %></li>
-			<li><%= link_to "Active invites", invites_url %></li>
-			<li><%= link_to "My profile", profile_url %></li>
+			<li>
+				<%= link_to "Home", root_url %>
+			</li>
+			<li>
+				<%= link_to "New Invite", new_invite_path %>
+			</li>
+			<li>
+				<%= link_to "Active invites", invites_url %>
+			</li>
+			<li>
+				<%= link_to "My profile", profile_url %>
+			</li>
 			<% if user_signed_in? %>
-			<li><%= link_to "Sign Out", "/users/sign_out", method: 'delete' %></li>
+			<li>
+				<%= link_to "Sign Out", "/users/sign_out", method: 'delete', class: 'button' %>
+			</li>
 			<% end %>
 		</ul>
-		
-		<% if !user_signed_in? %>
-			<%= link_to "Sign In", "/users/sign_in" %>
-		<% end %>
 	</div>
 </header>
 <main>
