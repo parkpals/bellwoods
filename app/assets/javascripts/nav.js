@@ -1,14 +1,14 @@
 $(() => {
-	const navBtn = $('#nav');
-	const body = $('body');
-	const header = $('header');
-	navBtn.on('click', () => {
+	const $body = $('body');
+	const $header = $('header');
+	const $navBtn = $('#nav');
+	$navBtn.on('click', () => {
 		$('header').toggleClass('nav_open');
 	});
 
-	body.keyup((e) => {
+	$body.keyup((e) => {
 		if (e.keyCode === 27) {
-			header.removeClass('nav_open');
+			$header.removeClass('nav_open');
 		}
 	});
 });
