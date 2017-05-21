@@ -34,29 +34,53 @@
   }
 }
 
-.field + .field {
-  margin-top: 15px;
+.field {
+  + .field {
+    margin-top: 15px;
+  }
 }
 
 .range {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  align-items: center;
+  max-width: 100%;
+  margin: auto;
+  padding: 15px;
   input[type="range"] {
-    width: calc(100% - 80px)
+    width: calc(100% - 80px);
+    height: 12px;
+    -webkit-appearance: none;
+    margin: 7px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    &:focus {
+      outline: none;
+    }
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    margin-top: -2px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 1px 1px 5px rgba(100,100,100,.1); /* Add cool effects to your sliders! */
   }
   output {
   }
 }
 
-main {
+main .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: calc(100vh - 57px);
+  height: calc(100vh - 48px);
   .map-container {
     flex: 1;
+    margin-top: 25px;
   }
 }
 
@@ -65,4 +89,4 @@ input[type="range"]::-webkit-slider-thumb {
   -moz-appearance: sliderthumb-horizontal;
   -ms-appearance: sliderthumb-horizontal;
   appearance: sliderthumb-horizontal;
- }
+}

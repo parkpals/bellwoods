@@ -1,12 +1,15 @@
 header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	background-color: #A3CCFF;
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	.ham-menu {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 	h1 {
+		font-size: 1.5rem;
 		padding: 10px;
 		margin: 0;
 	}
