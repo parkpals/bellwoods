@@ -1,5 +1,9 @@
 header {
-	background-color: #9ACCEF;
+	background-color: #014868;
+	a,
+	button.nav {
+		color: #EEF8F6;
+	}
 	nav {
 		display: flex;
 		justify-content: space-between;
@@ -14,16 +18,13 @@ header {
 		margin: 0;
 	}
 	button.nav {
-		position: relative;
 		display: inline-block;
 		padding: 10px;
 		cursor: pointer;
 		border: none;
 		background: none;
-		&:focus ul,
-		&:hover ul {
-			display: block;
-		}
+		transform: scale(1);
+		transition: all 1s ease;
 	}
 	ul {
 		font-size: 1.2rem;
@@ -42,6 +43,9 @@ header {
 		}
 	}
 	&.nav_open {
+		button.nav {
+			transform: scale(1.1); 
+		}
 		ul {
 			max-height: 1000px;
 			display: block;

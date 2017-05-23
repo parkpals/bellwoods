@@ -1,9 +1,8 @@
 body {
 	min-height: 100vh;
-	// font-family: $copyFont;
+	font-family: $copyFont;
 	color: $text;
-	// background: $bg;
-	background-image: url('/assets/bellwoods_background.png')
+	background: $bg;
 }
 
 h1,
@@ -14,11 +13,12 @@ h5,
 h6 {
 	margin: 0;
 	font-family: 'Bungee Hairline', cursive;
+	@include font-size(20);
 }
 
 h2 {
 	text-align: center;
-	margin: 15px 0;
+	margin: 5px 0;
 }
 
 h1 {
@@ -61,7 +61,7 @@ textarea {
 	border: none;
 	background: rgba($gray, 0.75);
 	width: 100%;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
 }
 
