@@ -84,7 +84,7 @@ label {
 }
 
 .wrapper {
-	width: 100%;
+  width: 95%;
 	max-width: 800px;
 	margin: 0 auto;
 }
@@ -94,8 +94,7 @@ label {
   background-color: #3498DB;
   box-shadow: inset 0px 0px 0px 2px transparent;
   &--round {
-	  padding: 10px 30px;
-    font-size: 18px;
+	  padding: 5px 20px;
     line-height: 1.33;
     border-radius: 999px;
   }

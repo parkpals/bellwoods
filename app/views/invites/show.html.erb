@@ -1,12 +1,16 @@
-<h2>Invitation</h2>
-<p>This invite was created on <%= @invite.created_at.strftime("%d %B %Y") %></p>
+<div class="wrapper">
+	<h2>Invitation</h2>
+	<p>This invite was created on <%= @invite.created_at.strftime("%d %B %Y") %></p>
 
-<% unless current_user %>
-  <p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
-<% end %>
-<p>Message: <%= @invite.message %></p>
-<p>Expires in: <%= distance_of_time_in_words(@invite.expires_in) %></p>
+	<% unless current_user %>
+	  <p>Sent from: <%= @invite.user.profile.abrev_name %>.</p>
+	<% end %>
+	<p>Message: <%= @invite.message %></p>
+	<p>Expires in: <%= distance_of_time_in_words(@invite.expires_in) %></p>
 
-<a id="js__get-directions" class="form__get-directions" href="javascript:void(0);">Get Directions</a>
+	<a id="js__get-directions" class="form__get-directions" href="javascript:void(0);">Get Directions</a>
+</div>
 
-<div id="map" style="height: 400px;"></div>
+<div class="map-container">
+  <%= render 'map' %>
+</div>

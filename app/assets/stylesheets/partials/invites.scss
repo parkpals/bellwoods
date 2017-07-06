@@ -78,19 +78,31 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   height: calc(100vh - 48px);
+  .wrapper {
+    margin: 2% auto;
+    background-color: #F5F9FA;
+    // background-image: url('/assets/bellwoods_background_tile.png');
+    padding: 20px;
+    border-radius: 5px;
+  }
   .map-container {
+    position: relative;
     flex: 1;
     margin-top: 15px;
+    .map-loading {
+      opacity: 0.5;
+      display: inline-block;
+      position: absolute;
+      font-size: 100px;
+      z-index: 99;
+      left: calc(50% - 65px);
+      top: calc(50% - 65px);
+      transform: translate(-50%, -50%);
+      &.hide {
+        display: none;
+      }
+    }
   }
-}
-
-form.new_invite {
-  width: 95%;
-  margin: auto;
-  background-color: #F5F9FA;
-  // background-image: url('/assets/bellwoods_background_tile.png');
-  padding: 20px;
-  border-radius: 5px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
