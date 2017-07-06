@@ -1,5 +1,10 @@
 header {
-	background-color: #9ACCEF;
+	padding: 10px 0;
+	background-color: #014868;
+	a,
+	button.nav {
+		color: #EEF8F6;
+	}
 	nav {
 		display: flex;
 		justify-content: space-between;
@@ -9,21 +14,18 @@ header {
 		font-size: 1.5rem;
 	}
 	h1 {
-		font-size: 1.5rem;
-		padding: 10px;
+		font-size: 1.6rem;
+		padding: 0;
 		margin: 0;
 	}
 	button.nav {
-		position: relative;
 		display: inline-block;
-		padding: 10px;
+		padding: 0;
 		cursor: pointer;
 		border: none;
 		background: none;
-		&:focus ul,
-		&:hover ul {
-			display: block;
-		}
+		// transform: scale(1);
+		transition: all 0.5s ease;
 	}
 	ul {
 		font-size: 1.2rem;
@@ -31,7 +33,7 @@ header {
 		text-align: center;
 		max-height: 0;
 		overflow: hidden;
-		transition: all 1s ease;
+		transition: max-height 1s ease;
 		a {
 			display: inline-block;
 			white-space: nowrap;
@@ -42,6 +44,9 @@ header {
 		}
 	}
 	&.nav_open {
+		// button.nav {
+		// 	transform: scale(1.1); 
+		// }
 		ul {
 			max-height: 1000px;
 			display: block;

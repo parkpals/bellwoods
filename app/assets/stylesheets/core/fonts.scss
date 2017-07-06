@@ -1,12 +1,10 @@
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600|Oswald);
-
 $open:		'Open Sans', sans-serif;
-$oswald:	'Oswald', sans-serif;
+$bungee: 'Bungee Hairline', cursive;
 
-$bodyFontSize: 16;
+$bodyFontSize: 14;
 $copyFont:		$open;
-$displayFont:	$oswald;
+$displayFont:	$bungee;
 
 @mixin font-size($size) {
 	font-size: #{$size}px;

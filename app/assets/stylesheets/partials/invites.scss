@@ -49,7 +49,7 @@
   padding: 15px;
   input[type="range"] {
     width: calc(100% - 80px);
-    height: 12px;
+    height: 9px;
     -webkit-appearance: none;
     margin: 7px 0;
     border-radius: 10px;
@@ -66,31 +66,43 @@
     border-radius: 50%;
     background: #fff;
     cursor: pointer;
-    margin-top: -2px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    margin-top: -1px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
     box-shadow: 1px 1px 5px rgba(100,100,100,.1); /* Add cool effects to your sliders! */
   }
   output {
   }
 }
 
-main .wrapper {
+main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: calc(100vh - 48px);
-  background-color: rgba(#fff, .80);
-  border: 1px solid rgba(#000, 0.10);
-  border-radius: 25px 25px 0 0;
-  margin-top: 5%;
-  .map-container {
-    flex: 1;
-    margin-top: 25px;
+  .wrapper {
+    margin: 2% auto;
+    background-color: #F5F9FA;
+    // background-image: url('/assets/bellwoods_background_tile.png');
+    padding: 20px;
+    border-radius: 5px;
   }
-}
-
-form {
-  width: 90%;
-  margin: auto;
+  .map-container {
+    position: relative;
+    flex: 1;
+    margin-top: 15px;
+    .map-loading {
+      opacity: 0.5;
+      display: inline-block;
+      position: absolute;
+      font-size: 100px;
+      z-index: 99;
+      left: calc(50% - 65px);
+      top: calc(50% - 65px);
+      transform: translate(-50%, -50%);
+      &.hide {
+        display: none;
+      }
+    }
+  }
 }
 
 input[type="range"]::-webkit-slider-thumb {

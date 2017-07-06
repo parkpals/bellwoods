@@ -46,6 +46,11 @@ var bellwoods = new google.maps.Polygon({
   fillOpacity: 0.35
 });
 
+function check_map_loaded() {
+  $('.map-loading').addClass('hide');
+};
+
+
 InvitesController.prototype.new = function(){
    var handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} }); 
    var avatar_url = this.params.avatar;
@@ -85,6 +90,7 @@ InvitesController.prototype.new = function(){
     };
 
     handler.map.centerOn(marker);
+    check_map_loaded();
     set_location();
     geoFence(userLOC);
   };
@@ -199,6 +205,7 @@ InvitesController.prototype.show = function(){
     };
 
     handler.map.centerOn(senderMarker);
+    check_map_loaded();
   });
 
   // Run directions calculation, and place on map
@@ -239,8 +246,7 @@ InvitesController.prototype.show = function(){
     });
   };
 
-// Build polygon
-var currentmap = handler.getMap();
-bellwoods.setMap(currentmap);
-
+  // Build polygon
+  var currentmap = handler.getMap();
+  bellwoods.setMap(currentmap);
 };

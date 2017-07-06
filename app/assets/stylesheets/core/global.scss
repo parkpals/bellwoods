@@ -1,9 +1,8 @@
 body {
 	min-height: 100vh;
-	// font-family: $copyFont;
+	font-family: $copyFont;
 	color: $text;
-	// background: $bg;
-	background-image: url('/assets/bellwoods_background.png')
+	background: $bg;
 }
 
 h1,
@@ -13,17 +12,17 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	font-family: 'Bungee Hairline', cursive;
+	@include font-size(20);
 }
 
 h2 {
 	text-align: center;
-	margin: 15px 0;
+	margin: 5px 0;
 }
 
 h1 {
 	a {
-		// color: $text;
-		// @include font-size(36);
 		&:hover {
 			text-decoration: none;
 		}
@@ -62,7 +61,7 @@ textarea {
 	border: none;
 	background: rgba($gray, 0.75);
 	width: 100%;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
 }
 
@@ -85,7 +84,7 @@ label {
 }
 
 .wrapper {
-	width: 100%;
+  width: 95%;
 	max-width: 800px;
 	margin: 0 auto;
 }
@@ -95,8 +94,7 @@ label {
   background-color: #3498DB;
   box-shadow: inset 0px 0px 0px 2px transparent;
   &--round {
-	  padding: 10px 30px;
-    font-size: 18px;
+	  padding: 5px 20px;
     line-height: 1.33;
     border-radius: 999px;
   }
