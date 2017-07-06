@@ -24,8 +24,8 @@ header {
 		cursor: pointer;
 		border: none;
 		background: none;
-		transform: scale(1);
-		transition: all 1s ease;
+		// transform: scale(1);
+		transition: all 0.5s ease;
 	}
 	ul {
 		font-size: 1.2rem;
@@ -33,7 +33,7 @@ header {
 		text-align: center;
 		max-height: 0;
 		overflow: hidden;
-		transition: all 1s ease;
+		transition: max-height 1s ease;
 		a {
 			display: inline-block;
 			white-space: nowrap;
@@ -44,9 +44,9 @@ header {
 		}
 	}
 	&.nav_open {
-		button.nav {
-			transform: scale(1.1); 
-		}
+		// button.nav {
+		// 	transform: scale(1.1); 
+		// }
 		ul {
 			max-height: 1000px;
 			display: block;
