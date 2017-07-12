@@ -98,4 +98,8 @@ label {
     line-height: 1.33;
     border-radius: 999px;
   }
+  &[disabled] {
+  	opacity: 0.5;
+  	cursor: not-allowed;
+  }
 }
