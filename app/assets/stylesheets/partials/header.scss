@@ -1,6 +1,6 @@
 header {
 	padding: 10px 0;
-	background-color: #014868;
+	background-color: #2B4862;
 	a,
 	button.nav {
 		color: #EEF8F6;
@@ -14,9 +14,24 @@ header {
 		font-size: 1.5rem;
 	}
 	h1 {
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 3px;
 		font-size: 1.6rem;
 		padding: 0;
 		margin: 0;
+		border: 2px solid #9BA4A3;
+		// background: #9BA4A3;
+	  font-size: 30px;
+		a {
+			padding: 0 5px;
+			color: #F1B04D;
+			text-shadow:
+		   -1px -1px 0 #000,  
+		    1px -1px 0 #000,
+		   -1px 1px 0 #000,
+		    1px 1px 0 #000;
+		}
 	}
 	button.nav {
 		display: inline-block;
