@@ -134,7 +134,7 @@ InvitesController.prototype.new = function(){
   // Apply Geofence, check user location
   var geoFence = function(userLOC) {  
     var inBounds = google.maps.geometry.poly.containsLocation(userLOC, bellwoods);
-    var bellwoodsCoords = new google.maps.LatLng(43.649849, -79.418321);      
+    var bellwoodsCoords = new google.maps.LatLng(43.649849, -79.418321);
     var currentmap = handler.getMap();
 
     bellwoods.setMap(currentmap);
