@@ -3,7 +3,7 @@
 
 	<% unless @invites.present? %>
 		<p>You don't have any active invites</p>
-		<%= link_to "Create a new invite", new_invite_path %>
+		<%= link_to "Create a new invite", new_invite_path, class: "btn btn--round" %>
 	<% end %>
 	<% @invites.each do |invite| %>
 		<div class="invite">	

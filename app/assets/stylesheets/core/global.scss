@@ -12,7 +12,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: 'Bungee Hairline', cursive;
+	font-family: 'Varela', sans-serif;
 	@include font-size(20);
 }
 
@@ -97,5 +97,9 @@ label {
 	  padding: 5px 20px;
     line-height: 1.33;
     border-radius: 999px;
+  }
+  &[disabled] {
+  	opacity: 0.5;
+  	cursor: not-allowed;
   }
 }

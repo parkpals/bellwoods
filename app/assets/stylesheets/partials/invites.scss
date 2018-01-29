@@ -28,9 +28,10 @@
 
 .form__get-directions {
   display: none;
+  text-align: center;
 
   &.target-active {
-    display: inline-block;
+    display: block;
   }
 }
 
@@ -96,7 +97,7 @@ main {
       font-size: 100px;
       z-index: 99;
       left: calc(50% - 65px);
-      top: calc(50% - 65px);
+      top: 145px;
       transform: translate(-50%, -50%);
       &.hide {
         display: none;
